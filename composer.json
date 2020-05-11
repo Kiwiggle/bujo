@@ -27,7 +27,9 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
-        "symfony/yaml": "5.0.*"
+        "symfony/webpack-encore-bundle": "^1.7",
+        "symfony/yaml": "5.0.*",
+        "tattali/calendar-bundle": "^1.2"
     },
     "require-dev": {
         "symfony/debug-pack": "*",

@@ -1,0 +1,18 @@
+h1 {
+    font-family: 'Rock Salt', cursive;
+    font-size: 3em;
+}
+
+h1, p {
+    text-align: center;
+}
+
+p {
+    font-size: 1.8em;
+}
+
+#calendar {
+    margin:auto;
+    width:75%;
+    background-color: #fff;
+}
