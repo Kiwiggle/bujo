@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('booking_new') }}"> Créer un événement </a>
+
+    <div id="calendar" data-events-url="{{ path('fc_load_events')}}"></div>
+    
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('calendar') }}
+{% endblock %}

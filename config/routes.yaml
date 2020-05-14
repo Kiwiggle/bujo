@@ -1,3 +1,9 @@
 index:
     path: /
-    controller: App\Controller\HomeController::index
+    controller: App\Controller\BookingController::index
+
+dropUpdate:
+    path: /dropUpdate/{id}
+    controller: App\Controller\BookingController::dropUpdate
+    options:
+        expose: true
