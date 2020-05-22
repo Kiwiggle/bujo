@@ -62,8 +62,8 @@ class CalendarSubscriber implements EventSubscriberInterface
              */
 
             $bookingEvent->setOptions([
-                'backgroundColor' => 'green',
-                'borderColor' => 'green'
+                'backgroundColor' => '#ff6397',
+                'borderColor' => '#ff6397'
             ]);
             $bookingEvent->addOption(
                 'url',

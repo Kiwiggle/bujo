@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         },
     ],
+
+    //En cas de drag&drop d'un événement
     eventDrop: function(info) {
 
       if (!confirm("Souhaitez-vous modifier la date de l'événement ?")) {
@@ -69,12 +71,64 @@ document.addEventListener('DOMContentLoaded', function() {
             alert(data.error);
           }
         });
+
         } 
       },
-      dateClick: function(info) {
-        info.dayEl.style.backgroundColor = 'red';
+
+    //Clic sur un événement
+    eventClick: function(info) {
+      info.jsEvent.preventDefault();
+      let url = info.event.url;
+      let id = url.match(/(\d+)/); //Pour récupérer l'id de l'event
+      $.ajax({
+          url: Routing.generate('booking.loadEvent', {id: id[0]}),
+          type: "POST",
+          async: true, 
+          success: function(data) {
+            $('.event-card').remove();
+            $("#event-click-result").append(data);
+            $("#event-click-result").show('fast');
+            $("#edit-event").click(function() {
+              $.ajax({
+                url: Routing.generate('booking_edit', {id: id[0]}),
+                type: "POST",
+                async: true, 
+                success: function(data) {
+                  console.log('ok');
+                  $('.form-container').remove();
+                  $('.popup').append(data);
+                  $('.popup').show();
+                },
+                error: function(data) {
+                  console.log("erreur 2ème ajax : " + data.responseText);
+                }
+              });
+            })
+          },
+          error: function(data) {
+            console.log(data.responseText);
+          }
+        });
       }
     });
 
   calendar.render();
 });
+
+$("#create-event").click(function() {
+  $.ajax({
+    url: Routing.generate('booking_new'),
+    type: "POST",
+    async: true, 
+    success: function(data) {
+      $('.form-container').remove();
+      $('.popup').append(data);
+      $('.popup').show();
+    },
+    error: function(data) {
+      console.log("erreur 2ème ajax : " + data.responseText);
+    }
+  });
+
+  $('.popup').show;
+})

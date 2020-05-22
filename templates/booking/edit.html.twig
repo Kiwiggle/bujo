@@ -1,13 +1,10 @@
-{% extends 'base.html.twig' %}
+<div class="form-container">
+     <h2>Éditer l'événement</h2>
 
-{% block title %}Éditer l'événement{% endblock %}
-
-{% block body %}
-    <h1>Éditer l'événement</h1>
-
-    {{ include('booking/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('booking_index') }}">Retour à la liste des événements</a>
+    {{ include('booking/_form.html.twig', {'button_label': 'Sauvegarder les changements'}) }}
 
     {{ include('booking/_delete_form.html.twig') }}
-{% endblock %}
+
+    <a href="{{ path('booking.calendar') }}">Retour au calendrier</a>
+</div> 
+

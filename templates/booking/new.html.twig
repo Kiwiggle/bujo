@@ -1,11 +1,8 @@
-{% extends 'base.html.twig' %}
+<div class="form-container">
+        <h2>Créer un événement</h2>
 
-{% block title %}Créer un événement{% endblock %}
+        {{ include('booking/_form.html.twig') }}
 
-{% block body %}
-    <h1>Créer un événement</h1>
-
-    {{ include('booking/_form.html.twig') }}
-
-    <a href="{{ path('booking_index') }}">Retour à la liste des événements</a>
-{% endblock %}
+        <a href="{{ path('booking.calendar') }}">Retour au calendrier</a>
+ </div>
+    

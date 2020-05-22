@@ -1,16 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href="{{ path('booking_new') }}"> Créer un événement </a>
+    
+    <div class="calendar-container">
+        <div id="calendar" data-events-url="{{ path('fc_load_events')}}"></div>
+        <div id="event-click-result">
+            <a id="edit-event" class="btn fc-button-primary">Modifier l'événement</a>
+        </div>
+        
+        <nav class="calendar-nav">
+            <a class="btn fc-button-primary" id="create-event"> Créer un événement </button>
+            <a href="{{path('index')}}">Retour à l'accueil du site</a>
+        </nav>
+    </div>
 
-    <div id="calendar" data-events-url="{{ path('fc_load_events')}}"></div>
+    <div class="popup"></div>
     
 {% endblock %}
 
 {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
     {{ encore_entry_link_tags('calendar') }}
+    {{ encore_entry_link_tags('form') }}
 {% endblock %}
 
 {% block javascripts %}
     {{ encore_entry_script_tags('calendar') }}
+    {{ encore_entry_script_tags('form') }}
 {% endblock %}

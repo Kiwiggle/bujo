@@ -1,4 +1,10 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_start(form) }}  
+    <div class="form dates-form">
+        {{ form_row(form.beginAt) }}
+        {{ form_row(form.endAt) }}
+    </div>
+    <div class="form">{{ form_row(form.title) }}</div>
+    <div class="form">{{ form_row(form.description) }}</div>
+    <div class="form">{{ form_row(form.place) }}</div>
+    <button class="btn fc-button-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

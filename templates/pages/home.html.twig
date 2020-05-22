@@ -3,9 +3,20 @@
 {% block title %} Index {% endblock %}
 
 {% block body %}
-    <h1>Online Bujo</h1>
 
-    {% include "booking/calendar.html.twig" %}
+    <div class="home-container">
+         <h1>Bullet Journal</h1>
+
+        <nav class="home-menu">
+            <ul>
+                <li> <a href="{{path('booking.calendar')}}">Agenda</a></li>
+                <li> <a href="">ToDoList</a></li>
+                <li> <a href="">Mood</a></li>
+                <li> <a href="">Notes</a></li>
+            </ul>
+        </nav>
+    </div>
+   
 {% endblock %}
 
 

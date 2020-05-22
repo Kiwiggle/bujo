@@ -1,6 +1,16 @@
 index:
     path: /
-    controller: App\Controller\BookingController::index
+    controller: App\Controller\HomeController::index
+
+booking.calendar:
+    path: /calendar
+    controller: App\Controller\BookingController::calendar
+
+booking.loadEvent:
+    path: /loadEvent/{id}
+    controller: App\Controller\BookingController::loadOneEvent
+    options:
+        expose: true
 
 dropUpdate:
     path: /dropUpdate/{id}

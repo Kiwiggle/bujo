@@ -1,6 +1,26 @@
-h1 {
-    font-family: 'Rock Salt', cursive;
+/**
+*
+*
+* GENERAL
+*
+*
+**/
+
+
+body {
+    font-family: 'Prata', serif;
+    background: rgb(255,199,199);
+    background: linear-gradient(184deg, rgba(255,199,199,1) 0%, rgba(255,167,202,1) 89%);  
+    height:100%; 
+    min-height:100vh;
+    color:#fff;
+}
+
+h1, h2 {
+    font-family: 'Permanent Marker', cursive;
     font-size: 3em;
+    margin:0;
+    text-shadow: 2px 2px 2px #ff73be;
 }
 
 h1, p {
@@ -11,8 +31,102 @@ p {
     font-size: 1.8em;
 }
 
-#calendar {
-    margin:auto;
-    width:75%;
-    background-color: #fff;
+a {
+    text-decoration: none;
+    color:#fff;
+
+    transition: 0.5s all;
 }
+
+button {
+    font-family: 'Prata', serif;
+}
+
+
+
+
+/**
+*
+*
+* NAV
+*
+*
+**/
+
+nav.home-menu {
+    width:100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+nav.home-menu ul {
+    padding: 0;
+    width:30%;
+    display:flex;
+    justify-content: space-between;
+}
+
+nav.home-menu ul li {
+    list-style: none;
+    font-size:2em;
+}
+
+
+nav.home-menu ul li:hover a {
+    color : #ff73be;
+    text-shadow: 1px 1px 2px #fff;
+}
+
+/**
+*
+*
+* HOME
+*
+*
+**/
+
+
+.home-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/**
+*
+*
+* POPUP
+*
+*
+**/
+
+
+.popup {
+    display:none;
+
+    background-color: #fff;
+    border-radius:10px;
+
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:2;
+    width:80%;
+    height:95vh;
+}
+
+.popup h2 {
+    color: #FAC1C7;
+}
+
+.popup a {
+    color:#ff6397;
+}
+
+
+

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Booking;
+use Doctrine\DBAL\Types\SmallIntType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,13 +24,13 @@ class BookingType extends AbstractType
                 'widget' => 'single_text'
             ])
             ->add('title', TextType::class, [
-                'label' => 'Nom de l\'événement'
+                'label' => 'Nom de l\'événement :'
             ])
             ->add('description', TextType::class, [
-                'label' => 'Description'
+                'label' => 'Description :'
             ])
             ->add('place', TextType::class, [
-                'label' => 'Adresse'
+                'label' => 'Adresse :'
             ])
         ;
     }
