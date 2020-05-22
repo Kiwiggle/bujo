@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:400,900&display=swap");
+
+.calendar-container {
+  width:100%;
+  min-height:100vh;
+  position:relative;
+
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#calendar {
+  color:#6e6e6e;
+  font-family: "Muli", sans-serif;
+  margin: 1% auto 0 auto;
+  position: relative;
+  width:45%;
+
+}
+
+#calendar h2, #event-click-result h3 {
+  color:#fff;
+  text-shadow: 1px 1px 2px #ff73be;
+}
+
+#calendar .fc-view-container {
+  background-color: #fff;
+}
+
+.fc-toolbar h2,
+.fc th {
+  font-weight: inherit;
+}
+
+.calendar-nav {
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.btn.fc-button-primary {
+  font-size:1.5em;
+  text-align: center;
+  padding:1%;
+  border-radius:10px;
+  margin:1% auto;
+}
+
+.calendar-container a {
+  text-align:center;
+}
+
+.fc-button-primary, .fc-button-primary:hover {
+  background-color: #ff6397;
+  border: none;
+}
+
+.fc-button-primary:disabled {
+  background-color: #ff6397;
+
+}
+
+.fc-button:hover, .fc-button-primary:hover {
+  background-color: #c90043;
+  text-decoration: none;
+}
+
+
+#event-click-result {
+  position:relative;
+  display:none;
+
+  width:25%;
+  margin:0 10% 0 0;
+  padding: 0 0 6% 0;
+
+}
+
+#event-click-result h3 {
+  font-size: 2em;
+  text-align: center;
+}
+
+#event-click-result p {
+  font-size: 1.5em;
+}
+
+#event-click-result a {
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  margin:auto;
+}
