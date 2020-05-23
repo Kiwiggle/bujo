@@ -41,33 +41,6 @@
   flex-direction: column;
 }
 
-.btn.fc-button-primary {
-  font-size:1.5em;
-  text-align: center;
-  padding:1%;
-  border-radius:10px;
-  margin:1% auto;
-}
-
-.calendar-container a {
-  text-align:center;
-}
-
-.fc-button-primary, .fc-button-primary:hover {
-  background-color: #ff6397;
-  border: none;
-}
-
-.fc-button-primary:disabled {
-  background-color: #ff6397;
-
-}
-
-.fc-button:hover, .fc-button-primary:hover {
-  background-color: #c90043;
-  text-decoration: none;
-}
-
 
 #event-click-result {
   position:relative;

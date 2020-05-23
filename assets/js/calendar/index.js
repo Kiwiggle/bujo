@@ -18,7 +18,7 @@ import "@fullcalendar/timegrid/main.css";
 import "./index.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
 
 
-
+//Init FullCalendar
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
   calendar.render();
 });
 
+//Clic sur le bouton "créer un événement"
 $("#create-event").click(function() {
   $.ajax({
     url: Routing.generate('booking_new'),

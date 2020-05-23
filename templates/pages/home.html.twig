@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %} Index {% endblock %}
+{% block title %} Online BuJo {% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
         <nav class="home-menu">
             <ul>
                 <li> <a href="{{path('booking.calendar')}}">Agenda</a></li>
-                <li> <a href="">ToDoList</a></li>
+                <li> <a href="{{path('todolist.index')}}">ToDoList</a></li>
                 <li> <a href="">Mood</a></li>
                 <li> <a href="">Notes</a></li>
             </ul>

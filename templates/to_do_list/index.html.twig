@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}To Do List{% endblock %}
+
+{% block body %}
+    <h1>To Do List</h1>
+
+    <section id="list">
+          {% for form in forms %}
+            {{ form_start(form) }}
+                <div class="done ">
+                        {{ form_label(form.done) }}
+                        {{ form_errors(form.done) }}
+                        {{ form_widget(form.done, {'attr': {'class': 'option-input checkbox'}}) }}
+                </div>
+                <div class="name">
+                    {{ form_label(form.name) }}
+                    {{ form_errors(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+            
+                <button class="btn fc-button-primary">{{ button_label|default('Ok') }}</button>
+            {{ form_end(form) }}
+        {% endfor %}
+    </section>
+
+    <a href="{{ path('todolist.new') }}" class="btn fc-button-primary">+</a>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('todolist') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('todolist') }}
+    
+{% endblock %}
