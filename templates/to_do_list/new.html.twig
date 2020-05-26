@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}New ToDoList{% endblock %}
-
-{% block body %}
-    <h1>Create new ToDoList</h1>
-
-    {{ include('to_do_list/_form.html.twig') }}
-
-    <a href="{{ path('to_do_list_index') }}">back to list</a>
-{% endblock %}
+{{ form_start(form) }}
+    <div class="done">
+        {{ form_label(form.done) }}
+        {{ form_errors(form.done) }}
+        {{ form_widget(form.done, {'attr': {'class': 'option-input checkbox'}}) }}
+    </div>
+    <div class="name">
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+    <div class="buttons">
+        <button class="btn fc-button-primary">{{ button_label|default('Ok') }}</button>
+    </div>
+{{ form_end(form) }}

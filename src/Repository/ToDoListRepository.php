@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\ToDoList;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,25 @@ class ToDoListRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ToDoList::class);
+    }
+
+    public function allOrderedByDate() {
+        return $this->createQueryBuilder('todolist')
+            ->orderBy('todolist.date', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+
+    }
+
+    public function findByDate($date) {
+        
+        return $this->createQueryBuilder('todolist')
+            ->where("todolist.date = :date")
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
     // /**

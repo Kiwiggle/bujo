@@ -1,7 +1,43 @@
+{% if forms is defined %}
+    <div>
+        <div class="list-design list">
 
+            {% if date is defined %}
+                {% set date = date %}
+            {% else %}
+                {% set date = "now"|date('d m Y') %}
+            {% endif %}
+            
+            <h2>{{date}}</h2>
 
+            {% for form in forms %}
+                
+                {{ form_start(form) }}
+                    <div class="done">
+                        {{ form_label(form.done) }}
+                        {{ form_errors(form.done) }}
+                        {{ form_widget(form.done, {'attr': {'class': 'option-input checkbox'}}) }}
+                    </div>
+                    <div class="name">
+                        {{ form_label(form.name) }}
+                        {{ form_errors(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="buttons">
+                        <button class="btn fc-button-primary">{{ button_label|default('Ok') }}</button>
+                        <a href="{{ path('todolist.delete', {id: ids[loop.index0]}) }}" class="btn fc-button-primary" onclick="return confirm('Voulez-vous vraiment supprimer ce point ?');" id="delete-entry">Supprimer</a>
+                    </div>
+            
+                {{ form_end(form) }}
+            {% endfor %}
+        </div>
+    </div>
 
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% else %}
+<div>
+    <div class="list-design">
+        <p>Il n'y a pas de liste :)</p>
+    </div>
+</div>
+{% endif %}
+

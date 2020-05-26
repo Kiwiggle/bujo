@@ -1,26 +1,91 @@
-body {
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+/**
+*
+* SLICK SLIDER DESIGN
+*
+**/
+
+
+#slick-holder {
+  margin-top:2%;
+  height:60vh;
 }
 
-#list {
-    width:75%;
-    margin:auto;
+#slick-nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
+#slick-nav button {
+  width: 60px;
+  height: 60px;
+  border:none;
+  color: #fff;
+  background: none;
+  margin: 2% 1%;
+}
+
+#slick-nav button:focus {
+  outline:none;
+}
+
+#slick-nav button:hover, #add-entry:hover {
+  cursor: pointer;
+}
+
+#slick-nav i {
+  font-size: 3em;
+}
+
+.slick-slide {
+  overflow: scroll;
+  max-height: 60vh;
+}
+
+.slick-list {
+  width:100%;
+}
+
+/**
+*
+* FORMS
+*
+**/
+
+#add-entry {
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  width:2%;
+  padding: 1%;
+}
+
+.list-design {
+    margin:5% auto 0 auto;
+    width:80%;
     display:flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
-#list form {
-    margin: 4% 0 0 0;
+.list-design h2 {
+  font-family: 'Prata', serif;
+  text-align: center;
+  margin: 0 0 2% 0;
+}
+
+.list-design form, .list form {
+    margin: 2% 0 2% 0;
 
     display:flex;
     flex-direction: row;
 }
 
+.date-title {
+  margin:2% 0;
+  text-align:center;
+  font-size: 1.5em;
+}
 
 .done {
     width:10%;
@@ -30,20 +95,22 @@ body {
     width:100%;
 }
 
+.buttons {
+  width:30%;
+}
+
 label {
     display:none;
 }
 
-
 input {
-
     width:95%;
     height:50px;
 
     border:none;
     background: none;
 
-    font-size:1.5em;
+    font-size:1.7em;
     font-family:'Prata', serif;
     color:#fff;
 }
@@ -53,8 +120,10 @@ input:focus {
     border-bottom: 1px solid #ff6397;
 }
 
-#list .btn.fc-button-primary {
-  margin:0;
+.list .btn.fc-button-primary {
+  margin:0 1%;
+  font-size:1.2em;
+  padding:5%;
 }
 
 
@@ -64,53 +133,6 @@ input:focus {
 *
 **/
 
-@-webkit-keyframes click-wave {
-    0% {
-      height: 40px;
-      width: 40px;
-      opacity: 0.35;
-      position: relative;
-    }
-    100% {
-      height: 200px;
-      width: 200px;
-      margin-left: -80px;
-      margin-top: -80px;
-      opacity: 0;
-    }
-  }
-
-  @-moz-keyframes click-wave {
-    0% {
-      height: 40px;
-      width: 40px;
-      opacity: 0.35;
-      position: relative;
-    }
-    100% {
-      height: 200px;
-      width: 200px;
-      margin-left: -80px;
-      margin-top: -80px;
-      opacity: 0;
-    }
-  }
-
-  @keyframes click-wave {
-    0% {
-      height: 40px;
-      width: 40px;
-      opacity: 0.35;
-      position: relative;
-    }
-    100% {
-      height: 200px;
-      width: 200px;
-      margin-left: -80px;
-      margin-top: -80px;
-      opacity: 0;
-    }
-  }
 
   .option-input {
     -webkit-appearance: none;
@@ -119,14 +141,12 @@ input:focus {
     -o-appearance: none;
     appearance: none;
     position: relative;
-    top: 0;
+    top: 5%;
     right: 0;
     bottom: 0;
     left: 0;
     height: 40px;
     width: 40px;
-    -webkit-transition: all 0.15s ease-out 0s;
-    -moz-transition: all 0.15s ease-out 0s;
     transition: all 0.15s ease-out 0s;
     background: #ff6397;
     border: none;
