@@ -56,8 +56,21 @@
   position:absolute;
   left:50%;
   transform: translateX(-50%);
-  width:2%;
   padding: 1%;
+  width:3%;
+  bottom:3%;
+}
+
+body > a {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+  bottom: 1%;
+}
+
+body > a:hover {
+  text-decoration: underline;
 }
 
 .list-design {

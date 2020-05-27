@@ -38,7 +38,7 @@ p {
 a {
     text-decoration: none;
     color:#fff;
-
+    text-align:center;
     transition: 0.5s all;
 }
 
@@ -77,7 +77,7 @@ nav.home-menu ul li {
 }
 
 
-nav.home-menu ul li:hover a {
+nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
     color : #ff73be;
     text-shadow: 1px 1px 2px #fff;
 }
@@ -148,6 +148,7 @@ nav.home-menu ul li:hover a {
     border-radius:10px;
     margin:1% auto;
     color:#fff;
+    background-color: #ff6397;
   }
   
   .fc-button-primary, .fc-button-primary:hover {

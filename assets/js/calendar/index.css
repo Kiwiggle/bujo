@@ -35,6 +35,27 @@
   font-weight: inherit;
 }
 
+.fc-today-button, .fc-prev-button, .fc-next-button, .fc-button-group, .fc-prev-button:hover, .fc-next-button:hover {
+  background-color: #ff6397;
+  border:none;
+  border-radius:5px;
+}
+
+.fc-unthemed td.fc-today {
+  background: rgb(255, 220, 223);
+}
+
+.fc-button-primary:disabled {
+  background-color: #ff6397;
+
+}
+
+.fc-button:hover, .fc-button-primary:hover {
+  background-color: #c90043;
+  text-decoration: none;
+}
+
+
 .calendar-nav {
   width:100%;
   display:flex;

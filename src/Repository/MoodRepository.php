@@ -19,6 +19,24 @@ class MoodRepository extends ServiceEntityRepository
         parent::__construct($registry, Mood::class);
     }
 
+    public function findAllOrderedByDate() {
+        return $this->createQueryBuilder('mood')
+            ->orderBy('mood.date', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByDate($date) {
+        
+        return $this->createQueryBuilder('mood')
+            ->where("mood.date = :date")
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Mood[] Returns an array of Mood objects
     //  */

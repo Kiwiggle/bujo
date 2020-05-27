@@ -135,12 +135,13 @@ class BookingController extends AbstractController
     {
 
         $booking = $bookingRepo->find($id);
+        dump($booking);
 
         return new Response (
             '<div class="event-card"> <h3>' . $booking->getTitle(). '</h3> 
             <p> Description : ' . $booking->getDescription() . ' </p> 
-            <p> Début le : ' . $booking->getBeginAt()->format('d/m/y à h:m') . ' </p> 
-            <p> Fin le : ' . $booking->getEndAt()->format('d/m/y à h:m') . ' </p> 
+            <p> Début le : ' . $booking->getBeginAt()->format('d/m/Y à H:i') . ' </p> 
+            <p> Fin le : ' . $booking->getEndAt()->format('d/m/Y à H:i') . ' </p> 
             <p> Adresse : ' . $booking->getPlace() . ' </p>
             </div>'
         );

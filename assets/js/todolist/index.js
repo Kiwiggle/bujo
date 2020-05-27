@@ -13,7 +13,7 @@ $('#add-entry').click(function() {
         type: "POST",
         async: true, 
         success: function(data) {
-            $('.slick-current .list-design').append(data);
+            $('#today-list .list-design').append(data);
             $('#to_do_list_name').attr('value', 'Écrire ici...')
         },
         error: function(data) {

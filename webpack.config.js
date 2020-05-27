@@ -27,6 +27,7 @@ Encore
     .addEntry('calendar', './assets/js/calendar/index.js')
     .addEntry('form', './assets/js/form/index.js')
     .addEntry('todolist', './assets/js/todolist/index.js')
+    .addEntry('mood', './assets/js/mood/index.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

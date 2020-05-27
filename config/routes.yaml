@@ -17,3 +17,7 @@ dropUpdate:
     controller: App\Controller\BookingController::dropUpdate
     options:
         expose: true
+
+mood.today:
+    path: /mood/today
+    controller: App\Controller\MoodController::moodToday

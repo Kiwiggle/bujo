@@ -5,33 +5,22 @@
 {% block body %}
     <h1>Mood index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Feeling</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mood in moods %}
-            <tr>
-                <td>{{ mood.id }}</td>
-                <td>{{ mood.feeling }}</td>
-                <td>{{ mood.date ? mood.date|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('mood_show', {'id': mood.id}) }}">show</a>
-                    <a href="{{ path('mood_edit', {'id': mood.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <nav id="mood-nav">
+        <ul>
+            <li><a href="{{path('mood.today')}}">Mood du jour</a></li>
+            <li><a href="{{path('mood.archives')}}">Archives</a></li>
+        </ul>
+    </nav>
+{% endblock %}
 
-    <a href="{{ path('mood_new') }}">Create new</a>
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('mood') }}
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('mood') }}
+    
 {% endblock %}

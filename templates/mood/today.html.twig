@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Mood du jour {% endblock %}
+
+{% block body %}
+
+    <h1>Mood du jour</h1>
+    
+    {% if today is defined %}
+         {% for today in today %}
+            <p>Feeling : {{today.feeling}}</p>
+            <p>Date : {{today.date|date('d m Y')}}</p>
+            <p>Gratitude : {{today.gratitude}}</p>
+            <p>Note : {{today.note}}</p>
+
+            {% set id = today.id %}
+            <div class="edit-button">
+              <a href="{{ path('mood.edit', {id: id}) }}" class="btn fc-button-primary">Modifier</a>   
+            </div>
+        {% endfor %}
+    {% else %} 
+        {% include "mood/_form.html.twig" %}
+    {% endif %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('mood') }}
+    {{ encore_entry_link_tags('form') }}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('mood') }}
+    {{ encore_entry_script_tags('form') }}
+    
+{% endblock %}
