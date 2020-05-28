@@ -60,7 +60,7 @@ class MoodController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="mood.edit", methods={"GET","POST"}, requirements={"id"="\d+"})
+     * @Route("/{id}/edit", name="mood.edit", methods={"GET","POST"}, requirements={"id"="\d+"}, options={"expose"=true})
      */
     public function edit(Request $request, Mood $mood): Response
     {
@@ -73,7 +73,7 @@ class MoodController extends AbstractController
             return $this->redirectToRoute('mood.index');
         }
 
-        return $this->render('mood/edit.html.twig', [
+        return $this->render('mood/_form.html.twig', [
             'mood' => $mood,
             'form' => $form->createView(),
         ]);
@@ -111,13 +111,6 @@ class MoodController extends AbstractController
         } 
 
         return $this->redirectToRoute('mood.index');
-    }
-
-      /**
-     * @Route("/archives", name="mood.archives")
-     */
-    public function moodArchives(Request $request, MoodRepository $moodRepo) {
-        return $this->render('mood/archives.html.twig');
     }
 }
 

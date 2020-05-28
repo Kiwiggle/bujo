@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Mood;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -28,12 +29,26 @@ class MoodRepository extends ServiceEntityRepository
     }
 
     public function findByDate($date) {
-        
         return $this->createQueryBuilder('mood')
             ->where("mood.date = :date")
             ->setParameter('date', $date)
             ->getQuery()
             ->getResult()
+            ;
+    }
+
+    public function findByMonth($month) {
+
+        $start = new DateTime('2020-' . $month . '-01');
+        $end = (clone $start)->modify('last day of this month');
+
+        return $this->createQueryBuilder('mood')
+            ->where("mood.date BETWEEN :start AND :end")
+            ->orderBy("mood.date", 'ASC')
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+            ->getQuery()
+            ->getArrayResult()
             ;
     }
 

@@ -28,6 +28,7 @@ Encore
     .addEntry('form', './assets/js/form/index.js')
     .addEntry('todolist', './assets/js/todolist/index.js')
     .addEntry('mood', './assets/js/mood/index.js')
+    .addEntry('chart', './assets/js/mood/charts.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
