@@ -93,7 +93,7 @@ class ToDoListController extends AbstractController
         $date = $toDoList->getdate();
         $list = $toDoListRepo->findByDate($date);
 
-        return $this->loadForms($list, $request, $date, 'edit', 'index');
+        return $this->loadForms($list, $request, $date, 'edit', 'indexRedirect');
 
     }
 
@@ -140,7 +140,7 @@ class ToDoListController extends AbstractController
                 $this->formatDateTime($date);
             }
             
-            if ($templateName == 'index') {
+            if ($templateName == 'indexRedirect') {
                 return $this->redirectToRoute('todolist.index');
             } else {
                 return $this->render('to_do_list/' . $templateName . '.html.twig', [

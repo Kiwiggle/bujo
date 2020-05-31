@@ -30,13 +30,19 @@
             {% if mood is defined %}
                 {% for mood in mood %}
                     <div class="mood-search-result">
-                        <p>Date : {{mood.date|date('d m Y')}}</p> 
-                        <p>Feeling : {{mood.feeling}}</p> 
-                        <p>Gratitude : {{mood.gratitude}}</p> 
-                        <p>Note : {{mood.note}}</p> 
+                        <h3>Résultat de la recherche : </h3>
+                        <p> <span>Date : </span><br> {{mood.date|date('d m Y')}}</p> 
+                        <p> <span>Feeling : </span><br> {{mood.feeling}}</p> 
+                        <p> <span>Gratitude : </span><br> {{mood.gratitude}}</p> 
+                        <p> <span>Note : </span><br> {{mood.note}}</p> 
                     </div>
                 {% endfor %}
+            {% else %}
+                    <div class="mood-search-result">
+                        <p> {{error}} </p>
+                    </div>
             {% endif %}
+            
         </div>
     </div>
    

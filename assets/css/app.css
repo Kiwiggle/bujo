@@ -66,14 +66,15 @@ nav.home-menu {
 
 nav.home-menu ul {
     padding: 0;
-    width:30%;
+    width:50%;
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 nav.home-menu ul li {
     list-style: none;
     font-size:2em;
+    margin: 1% 3%;
 }
 
 

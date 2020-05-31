@@ -39,10 +39,17 @@ class MoodArchivesController extends AbstractController
             $mood = $moodRepo->findByDate($date);
             dump($mood);
 
-            return $this->render('mood/archives.html.twig', [
-                "form" => $form->createView(),
-                "mood" => $mood
-            ]);
+            if (empty($mood)) {
+                return $this->render('mood/archives.html.twig', [
+                    "form" => $form->createView(),
+                    "error" => "Aucun résultat trouvé pour cette recherche."
+                ]);
+            } else {
+                return $this->render('mood/archives.html.twig', [
+                    "form" => $form->createView(),
+                    "mood" => $mood
+                ]);
+            }
         }
 
         return $this->render('mood/archives.html.twig', [

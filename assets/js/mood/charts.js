@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     $('.month').click(function(event) {
         $('.mood-search').hide();
-        $('#chart').show();
+        $('#chart').attr("style", "display:flex;");
 
         let month = checkMonth(event.currentTarget.id);
 

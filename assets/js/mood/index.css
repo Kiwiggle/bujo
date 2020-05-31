@@ -159,7 +159,7 @@ div.archives {
 
 #archives-nav {
     height:100vh;
-    width:14%;
+    width:20%;
     border:1px solid #ff6397;
 }
 
@@ -205,8 +205,20 @@ div.archives {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 86%;
     max-height:100%;
+}
+
+.mood-search {
+    width: 80%;
+}
+
+#chart{
+    width:70%;
+    margin: auto;
+}
+
+#chart {
+    display:none;
 }
 
 .mood-search form div, .mood-search form {
@@ -223,6 +235,7 @@ div.archives {
 }
 
 .mood-search form input {
+    color:#ff6397;
     width:70%;
     height:50px;
     font-size:0.8em;
@@ -240,8 +253,27 @@ div.archives {
     font-size:1em;
 }
 
-.mood-search-result p {
+.mood-search-result {
+    width:75%;
+    background-color: #fff;
+    border: 1px solid #ff6397;
+    border-radius: 15px;
+    color:#FAC4C7;
+}
+
+.mood-search-result p, .mood-search-result h3 {
     font-size:1.5em;
     padding: 0 10%;
+}
+
+.mood-search-result h3 {
+    text-align:center;
+}
+
+.mood-search-result span {
+    color:#ff6397;
+    font-weight: 800;
+    display:inline-block;
+    margin: 1% 0;
 }
 
