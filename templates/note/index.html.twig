@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notes{% endblock %}
+
+{% block body %}
+    <h1>Notes</h1>
+
+
+    <section id="notes">
+        {% for note in notes %}
+
+        <div class="note">
+            <a href="{{ path('note.edit', {id: note.id}) }}"><p>{{note.title}}</p>  </a>
+            <p> {{ note.date|date('m d Y') }} </p>
+        </div>
+
+        {% endfor %}
+    </section>
+    
+
+    
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('note') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('note') }}
+{% endblock %}

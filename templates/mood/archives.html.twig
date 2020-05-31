@@ -37,7 +37,7 @@
                         <p> <span>Note : </span><br> {{mood.note}}</p> 
                     </div>
                 {% endfor %}
-            {% else %}
+            {% elseif error is defined %}
                     <div class="mood-search-result">
                         <p> {{error}} </p>
                     </div>

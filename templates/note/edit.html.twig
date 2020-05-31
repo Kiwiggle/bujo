@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la note{% endblock %}
+
+{% block body %}
+
+    <section id="note-page">
+        <h1>{{note.title}}</h1>
+
+        <div id="note-edit"></div>
+
+        <a href="{{ path('note.edit', {id: note.id}) }}" id="save" class="btn fc-button-primary" >Sauvegarder</a>
+    </section>
+ 
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('note') }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        let id = {{note.id}};
+    </script>
+    {{ encore_entry_script_tags('note') }}
+{% endblock %}

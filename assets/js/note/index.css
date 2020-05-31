@@ -1,0 +1,85 @@
+/** 
+*
+* NOTES
+*
+**/
+
+#notes {
+    margin: 2% 0;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#notes .note {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    border:2px solid #fff;
+    border-radius: 15px;
+    background: #ff6397;
+
+    color: #fff;
+
+    width:15%;
+    margin: 2% 2%;
+
+}
+
+#notes p {
+    font-size:1.2em;
+}
+
+#notes a p{
+    color: #fff;
+    font-size: 1.5em;
+}
+
+#notes a:hover {
+    text-decoration: underline;
+}
+
+/** 
+*
+* EDIT NOTE
+*
+**/
+
+#note-page {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#note-edit {
+    width:50%;
+    margin: 5% 0;
+}
+
+#save {
+    margin:auto;
+}
+
+.codex-editor__redactor {
+    padding-bottom: 50px !important;
+}
+
+.ce-toolbar__plus {
+    color:#fff;
+}
+
+
+.ce-inline-toolbar__buttons, .ce-conversion-toolbar__tools, .ce-toolbar__plus:hover, .ce-toolbox__button--active, .ce-toolbox__button:hover {
+    color: #ff6397;
+}
+
+.ce-block--selected .ce-block__content {
+    background:none;
+    border-bottom:1px solid #ff6397;
+}
+

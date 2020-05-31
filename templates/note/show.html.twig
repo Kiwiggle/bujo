@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Note{% endblock %}
+
+{% block body %}
+    <h1>{{note.title}}</h1>
+
+    
+
+    <a href="{{ path('note.index') }}">Retour à la liste</a>
+
+    <a href="{{ path('note.edit', {'id': note.id}) }}">Éditer</a>
+
+    {{ include('note/_delete_form.html.twig') }}
+{% endblock %}
