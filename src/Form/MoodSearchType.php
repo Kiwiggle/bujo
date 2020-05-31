@@ -2,29 +2,21 @@
 
 namespace App\Form;
 
-use App\Entity\ToDoList;
+use App\Entity\MoodSearch;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ToDoListType extends AbstractType
+class MoodSearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => "Nom : "
-            ])
-            ->add('done', CheckboxType::class, [
-                'label' => 'Fait : ',
-                'required' => false
-            ])
             ->add('date', DateTimeType::class, [
-                'label' => 'Date : ',
-                'required' => false
+                'required' => false,
+                'label' => "Renseignez-ici la date qui vous intéresse : ",
+                'widget' => 'single_text'
             ])
         ;
     }
@@ -32,7 +24,14 @@ class ToDoListType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => ToDoList::class,
+            'data_class' => MoodSearch::class,
+            'method' => 'get',
+            'csrf_protection' => false
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

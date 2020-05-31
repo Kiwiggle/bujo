@@ -62,9 +62,12 @@ class MoodController extends AbstractController
     /**
      * @Route("/{id}/edit", name="mood.edit", methods={"GET","POST"}, requirements={"id"="\d+"}, options={"expose"=true})
      */
-    public function edit(Request $request, Mood $mood): Response
+    public function edit($id, Request $request, Mood $mood): Response
     {
-        $form = $this->createForm(MoodType::class, $mood);
+        $form = $this->createForm(MoodType::class, $mood, array(
+            'action'=> $this->generateUrl('mood.edit', ['id' => $id]),
+            'method' => 'GET'
+        ));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {% if ids is defined %}
+    {% if forms is defined %}
 
         <h1>To Do List</h1>
 
@@ -23,7 +23,7 @@
         <a id="add-entry" class="btn fc-button-primary"><i class="fas fa-plus"></i></a>
         <a href="{{path('index')}}">Retour à l'accueil du site</a>
 
-    {% else %}
+    {% elseif error is defined %}
 
         <h1>To Do List</h1>
 

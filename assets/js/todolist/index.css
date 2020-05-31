@@ -37,6 +37,16 @@
   font-size: 3em;
 }
 
+.slick-slide::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+.slick-slide::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #ff6397;
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0);
+}
+
 .slick-slide {
   overflow: scroll;
   max-height: 60vh;
@@ -106,6 +116,10 @@ body > a:hover {
 
 .name {
     width:100%;
+}
+
+.date {
+  display:none;
 }
 
 .buttons {

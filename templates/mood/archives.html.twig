@@ -1,33 +1,45 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <nav id="archives">
-        <div class="form">Rechercher</div>
-        <div class="month" id="january"><p>Janvier</p></div>
-        <div class="month" id="february"><p>Février</p></div>
-        <div class="month" id="march"><p>Mars</p></div>
-        <div class="month" id="april"><p>Avril</p></div>
-        <div class="month" id="may"><p>Mai</p></div>
-        <div class="month" id="june"><p>Juin</p></div>
-        <div class="month" id="july"><p>Juillet</p></div>
-        <div class="month" id="august"><p>Août</p></div>
-        <div class="month" id="september"><p>Septembre</p></div>
-        <div class="month" id="october"><p>Octobre</p></div>
-        <div class="month" id="november"><p>Novembre</p></div>
-        <div class="month" id="december"><p>Décembre</p></div>
-    </nav>
+    <div class="archives">
+         <nav id="archives-nav">
+            <div class="form"><i class="fas fa-search"></i><p>Rechercher</p></div>
+            <div class="month" id="january"><p>Janvier</p></div>
+            <div class="month" id="february"><p>Février</p></div>
+            <div class="month" id="march"><p>Mars</p></div>
+            <div class="month" id="april"><p>Avril</p></div>
+            <div class="month" id="may"><p>Mai</p></div>
+            <div class="month" id="june"><p>Juin</p></div>
+            <div class="month" id="july"><p>Juillet</p></div>
+            <div class="month" id="august"><p>Août</p></div>
+            <div class="month" id="september"><p>Septembre</p></div>
+            <div class="month" id="october"><p>Octobre</p></div>
+            <div class="month" id="november"><p>Novembre</p></div>
+            <div class="month" id="december"><p>Décembre</p></div>
+        </nav>
 
-    <div> 
+        <div id="chart">
+            <canvas id="myChart"></canvas>
+        </div>
 
-    <canvas id="myChart" width="800" height="800"></canvas>
-    
-    {% if moods is defined %}
-        {% for mood in moods %}
-            {{mood.feeling}} 
-        {% endfor %}
-    {% endif %}
-    
+
+        <div class="mood-search">
+
+            {% include "mood/_form.html.twig" %}
+
+            {% if mood is defined %}
+                {% for mood in mood %}
+                    <div class="mood-search-result">
+                        <p>Date : {{mood.date|date('d m Y')}}</p> 
+                        <p>Feeling : {{mood.feeling}}</p> 
+                        <p>Gratitude : {{mood.gratitude}}</p> 
+                        <p>Note : {{mood.note}}</p> 
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
+   
     
 {% endblock %}
 

@@ -9,6 +9,12 @@ body {
     padding:0;
 }
 
+/*
+*
+* MOOD NAV
+*
+*/
+
 #mood-nav, #mood-nav ul {
     display:flex;
     flex-direction: column;
@@ -142,15 +148,22 @@ select {
 *
 */
 
-#archives {
+div.archives {
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#archives-nav {
     height:100vh;
-    position: fixed;
-    left:0;
-    width:10%;
+    width:14%;
     border:1px solid #ff6397;
 }
 
-#archives div {
+#archives-nav div {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -162,8 +175,73 @@ select {
     height: calc(100vh/13);
 }
 
-#archives div:hover {
+#archives-nav div:hover {
     background-color: #ff6397;
     color:#fff;
+}
+
+#archives-nav div:nth-child(1) {
+    background-color: #ff6397;
+    color:#fff;
+}
+
+#archives-nav div:nth-child(1):hover {
+    background-color: #fff;
+    color:#ff6397;
+}
+
+#archives-nav p {
+    font-size: 1.3em;
+    font-weight: 800;
+}
+
+.fas.fa-search {
+    font-size:1.5em;
+    margin: 0 5% 0 0;
+}
+
+.mood-search, #chart {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 86%;
+    max-height:100%;
+}
+
+.mood-search form div, .mood-search form {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mood-search form {
+    margin: 5% 0;
+    font-size:1.5em;
+    margin:3% 0;
+}
+
+.mood-search form input {
+    width:70%;
+    height:50px;
+    font-size:0.8em;
+    font-family: 'Prata', serif;
+    text-align: center;
+    margin: 3% 0 4% 0;
+}
+
+.mood-search .btn.fc-button-primary {
+    
+    font-size:1em;
+}
+
+.mood-search form button {
+    font-size:1em;
+}
+
+.mood-search-result p {
+    font-size:1.5em;
+    padding: 0 10%;
 }
 

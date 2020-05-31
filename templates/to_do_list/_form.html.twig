@@ -8,7 +8,7 @@
                 {% set date = "now"|date('d m Y') %}
             {% endif %}
             
-            <h2>{{date}}</h2>
+            <h2>{{date|date('d m Y')}}</h2>
 
             {% for form in forms %}
                 
@@ -22,6 +22,11 @@
                         {{ form_label(form.name) }}
                         {{ form_errors(form.name) }}
                         {{ form_widget(form.name) }}
+                    </div>
+                    <div class="date">
+                        {{ form_label(form.date) }}
+                        {{ form_errors(form.date) }}
+                        {{ form_widget(form.date) }}
                     </div>
                     <div class="buttons">
                         <button class="btn fc-button-primary">{{ button_label|default('Ok') }}</button>

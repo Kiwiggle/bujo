@@ -7,6 +7,8 @@ use App\Form\ToDoListType;
 use App\Repository\ToDoListRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +28,7 @@ class ToDoListController extends AbstractController
         $today = date('Y-m-d');
         $todayList = $toDoListRepository->findByDate($today);
 
-        return $this->loadForms($todayList, $request, $today, 'index');
+        return $this->loadForms($todayList, $request, $today, 'index', 'index');
         
     }
 
@@ -40,7 +42,7 @@ class ToDoListController extends AbstractController
         $dateFormatted = new DateTime($date);
         $dateFormatted->format('d m Y');
 
-        return $this->loadForms($list, $request, $dateFormatted, '_form');
+        return $this->loadForms($list, $request, $dateFormatted, 'edit', '_form');
     }
 
     /**
@@ -49,17 +51,28 @@ class ToDoListController extends AbstractController
     public function new(Request $request): Response
     {
         $toDoList = new ToDoList();
-        $form = $this->createForm(ToDoListType::class, $toDoList, array(
+        $form = $this->createFormBuilder($toDoList, array(
             'action'=> $this->generateUrl('todolist.new'),
             'method' => 'POST',
-    ));
+        ))
+            ->add('name', TextType::class, [
+                'label' => "Nom : "
+            ])
+            ->add('done', CheckboxType::class, [
+                'label' => 'Fait : ',
+                'required' => false
+            ])
+            ->getForm();
+    
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
             $today = new \DateTime();
             $today->format('d-m-Y');
             $toDoList->setDate($today);
+
             $entityManager->persist($toDoList);
             $entityManager->flush();
 
@@ -75,21 +88,13 @@ class ToDoListController extends AbstractController
     /**
      * @Route("/{id}/edit", name="todolist.edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, ToDoList $toDoList): Response
+    public function edit($id, Request $request, ToDoList $toDoList, ToDoListRepository $toDoListRepo): Response
     {
-        $form = $this->createForm(ToDoListType::class, $toDoList);
-        $form->handleRequest($request);
+        $date = $toDoList->getdate();
+        $list = $toDoListRepo->findByDate($date);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        return $this->loadForms($list, $request, $date, 'edit', 'index');
 
-            return $this->redirectToRoute('todolist.index');
-        }
-
-        return $this->render('to_do_list/edit.html.twig', [
-            'to_do_list' => $toDoList,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
@@ -104,24 +109,19 @@ class ToDoListController extends AbstractController
         return $this->redirectToRoute('todolist.index');
     }
 
-    private function loadForms(array $list, Request $request, $date, string $templateName) {
+    private function loadForms(array $list, Request $request, $date, string $formUrl, string $templateName) {
 
         if (! $list == null) {
+
             //Je créée un formulaire checkbox/input/save pour chaque entrée de la bdd
             for ($i = 0; $i < sizeof($list); $i++) {
-                ${"form" . $i} = $this->get('form.factory')->createNamed(
-                    "form" . $i, 
-                    ToDoListType::class, 
-                    $list[$i], 
-                    array(
-                        'action'=> $this->generateUrl('todolist.index'),
-                        'method' => 'GET',
-                        'csrf_protection' => false
-                ));
-                ${"form" . $i}->handleRequest($request);
+                $formAction = $this->createFormAction($formUrl, $list[$i]);
+
+                ${"form" . $i} = $this->createNewForm($i, $list, $request, $formAction);
+
+                $forms[] = ${"form" . $i}->createView();
 
                 $ids[] = $list[$i]->getId();
-                $forms[] = ${"form" . $i}->createView();
             }
 
             //Je créée la gestion et modification de chaque formulaire
@@ -135,20 +135,21 @@ class ToDoListController extends AbstractController
             //Je formate la date pour le rendu HTML
             if (is_object($date)) {
                 dump($date);
-                $formattedDate = new DateTime($date->date);
-                $date = $formattedDate->format('d m Y');
+                $this->formatDateTime($date->date);
             } else {
-                $formattedDate = new DateTime($date);
-                $date = $formattedDate->format('d m Y');
+                $this->formatDateTime($date);
             }
             
-
-            return $this->render('to_do_list/' . $templateName . '.html.twig', [
-                'ids' => $ids,
-                'to_do_lists' => $list,
-                'forms' => $forms,
-                'date' => $date
-            ]);
+            if ($templateName == 'index') {
+                return $this->redirectToRoute('todolist.index');
+            } else {
+                return $this->render('to_do_list/' . $templateName . '.html.twig', [
+                    'ids' => $ids,
+                    'to_do_lists' => $list,
+                    'forms' => $forms,
+                    'date' => $date
+                ]);
+            }
 
         } else {
 
@@ -157,6 +158,27 @@ class ToDoListController extends AbstractController
             ]);
 
         }
+    }
+
+    private function createFormAction($formUrl, $list) {
+        if($formUrl == "index") {
+            $formAction = $this->generateUrl('todolist.' . $formUrl);
+        } else if ($formUrl == "edit") {
+            $id = $list->getId();
+            $formAction = $this->generateUrl('todolist.' . $formUrl, ["id" => $id]);
+        }
+
+        return $formAction;
+    }
+
+    private function createNewForm($index, $list, $request, $formAction) {
+        ${"form" . $index} = $this->get('form.factory')->createNamed("form" . $index, ToDoListType::class, $list[$index], 
+                    array(
+                        'action' => $formAction,
+                        'method' => 'GET',
+                        'csrf_protection' => false
+                ));
+        return ${"form" . $index}->handleRequest($request);
     }
 
     private function formatDateTime($date) {
