@@ -27,22 +27,32 @@ $(document).ready(function(){
 
     let previous = 0;
     let next = 0;
-
+    let date = new Date();
+    let formattedDate;
     $('#previous').click(function() {
         previous++;
-        let date = new Date();
+        
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
 
         day = day - previous;
-        date = year + "-" + month + "-" + day;
+        console.log(day);
+
+        if (day == 0) {
+            date = new Date(year, month - 1, 0);
+            day = date.getDate();
+            month = date.getMonth() + 1;
+            previous = 0;
+        }
+
+        formattedDate = year + "-" + month + "-" + day;
 
         $.ajax({
             url: Routing.generate('todolist.previous'),
             type: "POST",
             data: {
-                "date" : date
+                "date" : formattedDate
             },
             async: true, 
             success: function(data) {

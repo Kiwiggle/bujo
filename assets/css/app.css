@@ -145,7 +145,7 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
 .btn.fc-button-primary {
     font-size:1.5em;
     text-align: center;
-    padding:2%;
+    padding:1%;
     border-radius:10px;
     margin:1% auto;
     color:#fff;
@@ -172,10 +172,6 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
       width:100%;
       text-align: center;
       margin: 1% 0;
-  }
-
-  a:hover {
-      text-decoration: underline;
   }
 
 
