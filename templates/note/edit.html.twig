@@ -10,6 +10,7 @@
         <div id="note-edit"></div>
 
         <a href="{{ path('note.edit', {id: note.id}) }}" id="save" class="btn fc-button-primary" >Sauvegarder</a>
+        {% include "note/_delete_form.html.twig" %}
     </section>
  
 {% endblock %}

@@ -12,7 +12,7 @@
     flex-wrap: wrap;
 }
 
-#notes .note {
+.note {
     display:flex;
     flex-direction: column;
     justify-content: space-around;
@@ -41,6 +41,14 @@
 #notes a:hover {
     text-decoration: underline;
 }
+
+#create-note {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    width:100%;
+}
+
 
 /** 
 *

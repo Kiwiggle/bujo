@@ -5,7 +5,6 @@
 {% block body %}
     <h1>Notes</h1>
 
-
     <section id="notes">
         {% for note in notes %}
 
@@ -16,8 +15,10 @@
 
         {% endfor %}
     </section>
-    
 
+    <div id="create-note">
+        <a href="{{path('note.new')}}" class="btn fc-button-primary"><i class="fas fa-plus"></i></a>
+    </div> 
     
 {% endblock %}
 
@@ -25,6 +26,3 @@
     {{ encore_entry_link_tags('note') }}
 {% endblock %}
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('note') }}
-{% endblock %}

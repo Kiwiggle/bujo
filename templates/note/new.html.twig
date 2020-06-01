@@ -1,11 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Note{% endblock %}
+{% block title %}Nouvelle Note{% endblock %}
 
 {% block body %}
-    <h1>Create new Note</h1>
+    <h1>Nouvelle Note</h1>
 
-    {{ include('note/_form.html.twig') }}
+    {% include "note/_form.html.twig" %}
+    
 
-    <a href="{{ path('note_index') }}">back to list</a>
+    <a href="{{ path('note.index') }}">back to list</a>
 {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('note') }}
+{% endblock %}
+
+{% block javascripts %}
+    <script> 
+        let id = null;
+    </script>
+    {{ encore_entry_script_tags('note') }}
+{% endblock %}
+

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Note;
 use App\Form\NoteType;
 use App\Repository\NoteRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,12 +13,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/note")
+ * @Route("/notes")
  */
 class NoteController extends AbstractController
 {
     /**
-     * @Route("/", name="note.index", methods={"GET"})
+     * @Route("/", name="note.index", methods={"GET"}, options={"expose"=true})
      */
     public function index(NoteRepository $noteRepository): Response
     {
@@ -27,21 +28,34 @@ class NoteController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="note.new", methods={"GET","POST"})
+     * @Route("/new", name="note.new", methods={"GET","POST"}, options={"expose"=true})
      */
     public function new(Request $request): Response
     {
         $note = new Note();
         $form = $this->createForm(NoteType::class, $note);
-        $form->handleRequest($request);
+        dump($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($request->isXmlHttpRequest()) {
+
+            $data = $request->request->all();
+            dump($data);
+            $note->setTitle($data['title']);
+            $note->setContent($data['outputData']);
+
+
+            $date = new DateTime();
+            $date->format('Y-m-d');
+            $note->setDate($date);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($note);
             $entityManager->flush();
 
-            return $this->redirectToRoute('note.index');
+            return new Response();
         }
+
+        
 
         return $this->render('note/new.html.twig', [
             'note' => $note,
@@ -82,7 +96,7 @@ class NoteController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="note.delete", methods={"DELETE"}, requirements={"id"="\d+"})
+     * @Route("/delete/{id}", name="note.delete", methods={"DELETE"}, requirements={"id"="\d+"}, options={"expose"=true})
      */
     public function delete(Request $request, Note $note): Response
     {
