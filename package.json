@@ -3,6 +3,7 @@
         "@editorjs/editorjs": "^2.17.0",
         "@editorjs/header": "^2.4.1",
         "@editorjs/list": "^1.4.0",
+        "@editorjs/paragraph": "^2.6.1",
         "@symfony/webpack-encore": "^0.30.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",

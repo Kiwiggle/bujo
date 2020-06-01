@@ -1,7 +1,11 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+
+    <p>Rédigez la note ici : </p>
     <div id="editor">
         <div id="note_content"></div>
     </div>
-    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+    <div class="button">
+            <button class="btn fc-button-primary">{{ button_label|default('Sauvegarder') }}</button>
+    </div>
 {{ form_end(form) }}

@@ -49,6 +49,10 @@
     width:100%;
 }
 
+#create-note a {
+    width:2%;
+}
+
 
 /** 
 *
@@ -64,9 +68,22 @@
 
 }
 
+
+#note-page form {
+    margin:0;
+}
+
+#note-page form .button {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
 #note-edit {
     width:50%;
     margin: 5% 0;
+    padding: 3%;
 }
 
 #save {
@@ -83,7 +100,7 @@
 
 
 .ce-inline-toolbar__buttons, .ce-conversion-toolbar__tools, .ce-toolbar__plus:hover, .ce-toolbox__button--active, .ce-toolbox__button:hover {
-    color: #ff6397;
+    color: #fff;
 }
 
 .ce-block--selected .ce-block__content {
@@ -91,3 +108,84 @@
     border-bottom:1px solid #ff6397;
 }
 
+/** 
+*
+* NEW NOTE
+*
+**/
+
+#editor, #note-edit {
+    border-top: 1px solid #ff6397;
+    border-bottom : 1px solid #ff6397;
+    width:60%;
+    margin: 2% 0;
+}
+
+.codex-editor--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before {
+    color:#fff;
+}
+
+.button, #note-page form {
+    width:100%;
+}
+
+.button {
+    display:flex;
+    justify-content: center;
+}
+
+#note_content {
+    padding: 5%;
+}
+
+
+
+/** 
+*
+* FORM
+*
+**/
+
+form {
+    margin : 1% 0;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form #note {
+    width:60%;
+    font-size:1.8em;
+}
+
+form #note div {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+
+}
+
+form #note div input {
+    width:100%;
+    height:50px;
+    margin : 4% 0;
+    padding:2%;
+
+    color:#fff;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'Prata', serif;
+
+    border:none;
+    border-bottom: 1px solid #ff6397;
+    border-top : 1px solid #ff6397;
+    background: none;
+}
+
+input:focus {
+    outline: none;
+}

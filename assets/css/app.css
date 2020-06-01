@@ -28,7 +28,7 @@ h1, p {
 }
 
 h1 {
-    margin-top:2%;
+    margin: 1% 0;
 }
 
 p {
@@ -152,7 +152,7 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
     background-color: #ff6397;
   }
   
-  .fc-button-primary, .fc-button-primary:hover {
+  .fc-button-primary {
     background-color: #ff6397;
     border: none;
   }
@@ -165,6 +165,17 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
   .fc-button:hover, .fc-button-primary:hover {
     background-color: #c90043;
     text-decoration: none;
+  }
+
+  a.back-link {
+      display:inline-block;
+      width:100%;
+      text-align: center;
+      margin: 1% 0;
+  }
+
+  a:hover {
+      text-decoration: underline;
   }
 
 

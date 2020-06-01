@@ -3,6 +3,7 @@ import "./index.css"; // this will create a calendar.css file reachable to 'enco
 import Editor from '../../../node_modules/@editorjs/editorjs/dist/editor.js';
 const Header = require('@editorjs/header');
 const List = require('@editorjs/list');
+const Paragraph = require('@editorjs/paragraph');
 
 const routes = require('../../../public/js/fos_js_routes.json');
 import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
@@ -56,6 +57,12 @@ function initEditor(ElementId, data = null) {
     return new Editor({
         holder: ElementId,
         tools: {
+            paragraph: {
+                class: Paragraph,
+                config: {
+                    placeholder: "Cliquez ici pour écrire :)"
+                }
+            },
             header: {
                 class: Header,
                 config: {

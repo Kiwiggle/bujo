@@ -8,11 +8,13 @@
     {% include "note/_form.html.twig" %}
     
 
-    <a href="{{ path('note.index') }}">back to list</a>
+    <a href="{{ path('note.index') }}" class="back-link">Retour aux notes</a>
 {% endblock %}
 
 {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
     {{ encore_entry_link_tags('note') }}
+    
 {% endblock %}
 
 {% block javascripts %}
