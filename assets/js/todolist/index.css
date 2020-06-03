@@ -62,33 +62,30 @@
 *
 **/
 
-#add-entry {
-  position:absolute;
-  left:50%;
-  transform: translateX(-50%);
+nav {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+nav #add-entry {
   padding: 1%;
   width:3%;
   bottom:3%;
 }
 
-body > a {
-  text-align: center;
-  display: inline-block;
-  width: 100%;
-  position: absolute;
-  bottom: 1%;
-}
-
-body > a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
 .list-design {
-    margin:5% auto 0 auto;
-    width:80%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
+  margin:5% auto 0 auto;
+  width:80%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .list-design h2 {
@@ -226,4 +223,77 @@ input:focus {
   
 
  
-  
+/**
+*
+* MEDIA QUERIES
+*
+**/
+
+@media screen and (max-width:1050px) {
+
+  h2 {
+    font-size: 2.3em;
+  }
+  form {
+    align-items: center;
+  }
+  .buttons {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons button.btn.fc-button-primary, .buttons a.btn.fc-button-primary {
+    font-size:1em;
+    width:70%;
+    padding: 10%;
+  }
+
+  form input {
+    font-size:1.5em;
+  }
+
+  #add-entry {
+    width: 8%;
+  }
+}
+
+@media screen and (max-width:700px) {
+  .list-design form {
+    flex-direction: column;
+    margin: 5% 0;
+    border: 1px dotted #ff6397;
+    padding: 5%;
+  }
+
+  form input {
+    margin: 3% 0;
+    text-align: center;
+  }
+
+  .option-input:checked::before {
+    left: 1px;
+  }
+
+  .buttons {
+    width: 50%;
+  }
+
+  .buttons button.btn.fc-button-primary, .buttons a.btn.fc-button-primary {
+    margin: 3% 0;
+    padding: 6%;
+    width: 100%;
+  }
+
+  #slick-holder {
+    height: 70vh;
+  }
+
+  .slick-slide {
+    max-height: 70vh;
+  }
+
+  #add-entry {
+    min-width: 40px;
+  }
+}

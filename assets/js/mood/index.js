@@ -12,6 +12,18 @@ $(document).ready(function() {
 
     $('#mood div select').select2();
 
+    $('#close-menu').click(function() {
+        $('#archives-nav').attr('style', 'left:-100%');
+    });
+
+    $('#open-menu').click(function(){
+        $('#archives-nav').attr('style', 'left:0');
+    });
+
+    $('#archives-nav div').click(function() {
+        $('#archives-nav').attr('style', 'left:-100%');
+    });
+
     $('.edit-button a').click(function(info) {
         info.preventDefault();
         let url = info.target.attributes[0].value;

@@ -1,7 +1,15 @@
 index:
-    path: /
+    path: /bujo
     controller: App\Controller\HomeController::index
 
+logout:
+    path: /logout
+    methods: GET
+
+login:
+  path: /login
+  controller: App\Controller\SecurityController::login
+  
 booking.calendar:
     path: /calendar
     controller: App\Controller\BookingController::calendar

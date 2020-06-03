@@ -14,14 +14,17 @@
             </section>
         </div>
 
+    <nav>
         <div id="slick-nav">
-            <button type="button" id="previous" class="prev"><i class="fas fa-arrow-left"></i></button>
-            <button type="button" id="next" class="next"><i class="fas fa-arrow-right"></i></button>
-        </div>
-        
+                <button type="button" id="previous" class="prev"><i class="fas fa-arrow-left"></i></button>
+                <button type="button" id="next" class="next"><i class="fas fa-arrow-right"></i></button>
+            </div>
+            
 
-        <a id="add-entry" class="btn fc-button-primary"><i class="fas fa-plus"></i></a>
-        <a href="{{path('index')}}">Retour à l'accueil du site</a>
+            <a id="add-entry" class="btn fc-button-primary"><i class="fas fa-plus"></i></a>
+            <a href="{{path('index')}}">Retour à l'accueil du site</a>
+    </nav>
+      
 
     {% elseif error is defined %}
 

@@ -157,10 +157,17 @@ div.archives {
     justify-content: space-between;
 }
 
+#close-menu, #open-menu {
+    display:none;
+}
+
 #archives-nav {
     height:100vh;
     width:20%;
     border:1px solid #ff6397;
+    z-index:100;
+
+    transition: 1s all;
 }
 
 #archives-nav div {
@@ -277,3 +284,50 @@ div.archives {
     margin: 1% 0;
 }
 
+
+@media screen and (max-width: 950px) {
+    body > form {
+        width: 85%;
+    }
+
+    #archives-nav {
+        left:-100%;
+        position: absolute;
+        top:0;
+        width:100%;
+    }
+
+    #archives-nav div {
+        border:none;
+    }
+
+    .fas.fa-search {
+        margin: 0 1% 0 0;
+    }
+
+    div #close-menu, #open-menu {
+        display:inline-block;
+        font-size: 30px;
+        color:#fff;
+        position: absolute;
+        top: 1%;
+        right: 2%;
+        z-index: 100;
+    }
+
+    #open-menu {
+        z-index:0;
+    }
+
+    #archives-nav div:nth-child(1):hover ~ #close-menu {
+        color:#ff6397;
+    }
+
+    .mood-search {
+        width:100%;
+    }
+
+    #chart {
+        width: 95%;
+    }
+}

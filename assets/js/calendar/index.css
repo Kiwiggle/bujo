@@ -89,3 +89,64 @@
   transform:translateX(-50%);
   margin:auto;
 }
+
+
+/**
+*
+*
+* MEDIA QUERIES
+*
+*
+**/
+
+
+@media screen and (max-width:1280px) {
+
+    .calendar-container {
+      flex-direction: column;
+    }
+
+    #calendar {
+      width:80%;
+      margin: 4% 0;
+    }
+
+    #event-click-result {
+      width:70%;
+      margin: 2% 0;
+      padding:0;
+      min-height:400px;
+    }
+}
+
+@media screen and (max-width:820px) {
+  #event-click-result {
+    min-height:470px;
+  }
+
+  #calendar {
+    width:90%;
+    margin: 4% 0;
+  }
+
+  .popup h2 {
+    font-size: 2.3em;
+    margin: 4% 0;
+  }
+
+  .popup form {
+    margin: 4% 0;
+  }
+
+  .popup form div {
+    width:90%;
+  }
+
+  .popup form input {
+    margin: 4% 0;
+  }
+
+  .popup .form.dates-form {
+    width:100%;
+  }
+}

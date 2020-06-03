@@ -24,6 +24,7 @@
 
     color: #fff;
 
+    min-width: 300px;
     width:15%;
     margin: 2% 2%;
 
@@ -51,6 +52,7 @@
 
 #create-note a {
     width:2%;
+    min-width:40px;
 }
 
 
@@ -95,12 +97,12 @@
 }
 
 .ce-toolbar__plus {
-    color:#fff;
+    color:#ff6397;
 }
 
 
 .ce-inline-toolbar__buttons, .ce-conversion-toolbar__tools, .ce-toolbar__plus:hover, .ce-toolbox__button--active, .ce-toolbox__button:hover {
-    color: #fff;
+    color: #ff6397;
 }
 
 .ce-block--selected .ce-block__content {

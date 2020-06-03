@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Se connecter' %}
+
+{% block body %}
+    <div class="login-container">
+
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.messageKey | trans(error.messagedata, 'security') }}
+            </div>
+        {% endif %}
+
+        <p>
+            Vous devez vous identifier pour accéder à cette application. <br>
+            Pour toute demande, s'adresser à <a href="http://tyffanyrobbes.com">Tyffany Robbes</a>  
+        </p>
+
+        <form action=" {{ path('login') }} " method="post">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}">
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="_password" class="form-control">
+            </div>
+
+            <button type="submit" class="btn fc-button-primary">Se connecter</button>
+
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('form') }}
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

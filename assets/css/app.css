@@ -176,3 +176,21 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
 
 
 
+/**
+*
+*
+* MEDIA QUERIES
+*
+*
+**/
+
+@media screen and (max-width:600px) {
+    .home-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav.home-menu ul li {
+        margin: 4% 0;
+    }
+}
