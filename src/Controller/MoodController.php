@@ -88,7 +88,6 @@ class MoodController extends AbstractController
     public function moodToday(Request $request, MoodRepository $moodRepo) {
         $today = date('Y-m-d');
         $todayMood = $moodRepo->findByDate($today);
-        dump($todayMood);
 
         if (empty($todayMood)) {
             $newForm = $this->new('today', $request);

@@ -34,12 +34,10 @@ class NoteController extends AbstractController
     {
         $note = new Note();
         $form = $this->createForm(NoteType::class, $note);
-        dump($request);
 
         if ($request->isXmlHttpRequest()) {
 
             $data = $request->request->all();
-            dump($data);
             $note->setTitle($data['title']);
             $note->setContent($data['outputData']);
 
@@ -83,7 +81,6 @@ class NoteController extends AbstractController
         $data = $request->request->get('outputData');
 
         if (!empty($data)){
-            dump($data);
             $note->setContent($data);
             $em = $this->getDoctrine()->getManager();
             $em->flush();

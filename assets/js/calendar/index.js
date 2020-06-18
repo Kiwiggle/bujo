@@ -13,7 +13,7 @@ import $ from 'jquery';
 
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
-import "@fullcalendar/timegrid/main.css";
+
 
 import "./index.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
 

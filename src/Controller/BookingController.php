@@ -89,10 +89,9 @@ class BookingController extends AbstractController
     */
     public function dropUpdate(BookingRepository $bookingRepo, Request $request, EntityManagerInterface $em)
     {
-        $request->isXmlHttpRequest();
         $data = $request->request->all();
 
-        if (isset($data['start'], $data['end'], $data['id'])) {
+        if ($request->isXmlHttpRequest() && isset($data['start'], $data['end'], $data['id'])) {
             //Je mets les dates au bon format
             $startOk = new \DateTime($data['start']);
             $startOk->format('Y-m-d H:i:s');
@@ -135,7 +134,6 @@ class BookingController extends AbstractController
     {
 
         $booking = $bookingRepo->find($id);
-        dump($booking);
 
         return new Response (
             '<div class="event-card"> <h3>' . $booking->getTitle(). '</h3> 

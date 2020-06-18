@@ -33,7 +33,6 @@ class MoodArchivesController extends AbstractController
             $date = $date->getdate();
             $date = $date->format('Y-m-d');
             $mood = $moodRepo->findByDate($date);
-            dump(empty($mood));
 
             if (empty($mood)) {
                 return $this->render('mood/archives.html.twig', [
@@ -58,7 +57,6 @@ class MoodArchivesController extends AbstractController
      */
     public function archivesMonth($month, Request $request, MoodRepository $moodRepo) {
         $monthMood = $moodRepo->findByMonth($month);
-        dump($monthMood);
 
         return new JsonResponse($monthMood);
     }
