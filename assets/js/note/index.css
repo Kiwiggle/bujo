@@ -20,7 +20,7 @@
 
     border:2px solid #fff;
     border-radius: 15px;
-    background: #ff6397;
+    background: #31be36;
 
     color: #fff;
 
@@ -97,17 +97,17 @@
 }
 
 .ce-toolbar__plus {
-    color:#ff6397;
+    color:#77d07a;
 }
 
 
 .ce-inline-toolbar__buttons, .ce-conversion-toolbar__tools, .ce-toolbar__plus:hover, .ce-toolbox__button--active, .ce-toolbox__button:hover {
-    color: #ff6397;
+    color: #77d07a;
 }
 
 .ce-block--selected .ce-block__content {
     background:none;
-    border-bottom:1px solid #ff6397;
+    border-bottom:1px solid #77d07a;
 }
 
 /** 
@@ -117,8 +117,8 @@
 **/
 
 #editor, #note-edit {
-    border-top: 1px solid #ff6397;
-    border-bottom : 1px solid #ff6397;
+    border-top: 1px solid #77d07a;
+    border-bottom : 1px solid #77d07a;
     width:60%;
     margin: 2% 0;
 }
@@ -183,8 +183,8 @@ form #note div input {
     font-family: 'Prata', serif;
 
     border:none;
-    border-bottom: 1px solid #ff6397;
-    border-top : 1px solid #ff6397;
+    border-bottom: 1px solid #77d07a;
+    border-top : 1px solid #77d07a;
     background: none;
 }
 

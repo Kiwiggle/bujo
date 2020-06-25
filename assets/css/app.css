@@ -9,9 +9,9 @@
 
 body {
     font-family: 'Prata', serif;
-    background: rgb(255,199,199);
-    background: linear-gradient(184deg, rgba(255,199,199,1) 0%, rgba(255,167,202,1) 89%);  
-    height:100%; 
+    background: rgb(255,217,161);
+    background: radial-gradient(circle, rgba(255,217,161,1) 0%, rgba(187,217,134,1) 62%, rgba(165,213,121,1) 80%, rgba(111,210,99,1) 100%);
+    
     min-height:100vh;
     color:#fff;
 }
@@ -20,7 +20,7 @@ h1, h2 {
     font-family: 'Permanent Marker', cursive;
     font-size: 3em;
     margin:0;
-    text-shadow: 2px 2px 2px #ff73be;
+    text-shadow: 2px 2px 2px #31be36;
 }
 
 h1, p {
@@ -79,7 +79,7 @@ nav.home-menu ul li {
 
 
 nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
-    color : #ff73be;
+    color : #31be36;
     text-shadow: 1px 1px 2px #fff;
 }
 
@@ -93,45 +93,66 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
 
 
 .home-container {
+    margin:auto;
     min-height: 100vh;
+    width:90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-
-/**
-*
-*
-* POPUP
-*
-*
-**/
-
-
-.popup {
-    display:none;
-
-    background-color: #fff;
-    border-radius:10px;
-
-    position: fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    z-index:2;
-    width:80%;
-    height:95vh;
+#bujo-explain {
+    width:100%;
 }
 
-.popup h2 {
-    color: #FAC1C7;
+#bujo-explain section {
+    width:100%;
+    margin: 5% 0;
 }
 
-.popup a {
-    color:#ff6397;
+.home-container h2 {
+    font-size:2em;
+    text-align: center;
 }
+
+.bujo-explain-part p {
+    font-size: 1.5em;
+    max-width:450px;
+    padding: 2%;
+    line-height:1.5;
+    margin: auto 5%;
+}
+
+video {
+    width:40%;
+    border:1px solid white;
+}
+
+.video-container {
+    margin: 5% 0;
+    display:flex;
+    justify-content: center;
+}
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    margin : 0 0 5% 0;
+}
+
+#contact a {
+    font-size: 1.5em;
+    cursor:pointer;
+}
+#contact a:hover {
+    text-decoration: underline;
+}
+
+#contact h2 {
+    font-size: 2.5em;
+}
+
 
 
 /**
@@ -149,21 +170,22 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
     border-radius:10px;
     margin:1% auto;
     color:#fff;
-    background-color: #ff6397;
+    background-color: #31be36;
+    min-width:100px;
   }
   
   .fc-button-primary {
-    background-color: #ff6397;
+    background-color: #31be36;
     border: none;
   }
   
   .fc-button-primary:disabled {
-    background-color: #ff6397;
+    background-color: #31be36;
   
   }
   
   .fc-button:hover, .fc-button-primary:hover {
-    background-color: #c90043;
+    background-color: #27932b;
     text-decoration: none;
   }
 

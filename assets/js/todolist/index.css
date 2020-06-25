@@ -43,7 +43,7 @@
 }
 .slick-slide::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: #ff6397;
+  background-color: #77d07a;
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0);
 }
 
@@ -141,7 +141,7 @@ input {
 
 input:focus {
     outline:none;
-    border-bottom: 1px solid #ff6397;
+    border-bottom: 1px solid #77d07a;
 }
 
 .list .btn.fc-button-primary {
@@ -172,7 +172,7 @@ input:focus {
     height: 40px;
     width: 40px;
     transition: all 0.15s ease-out 0s;
-    background: #ff6397;
+    background: #77d07a;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -184,11 +184,11 @@ input:focus {
   }
 
   .option-input:hover {
-    background: #ff6397;
+    background: #77d07a;
   }
 
   .option-input:checked {
-    background: #ff6397;
+    background: #77d07a;
   }
 
   .option-input:checked::before {
@@ -206,7 +206,7 @@ input:focus {
     -webkit-animation: click-wave 0.65s;
     -moz-animation: click-wave 0.65s;
     animation: click-wave 0.65s;
-    background: #ff6397;
+    background: #77d07a;
     content: '';
     display: block;
     position: relative;
@@ -262,7 +262,7 @@ input:focus {
   .list-design form {
     flex-direction: column;
     margin: 5% 0;
-    border: 1px dotted #ff6397;
+    border: 1px dotted #77d07a;
     padding: 5%;
   }
 

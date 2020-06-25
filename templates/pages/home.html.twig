@@ -5,16 +5,54 @@
 {% block body %}
 
     <div class="home-container">
-         <h1>Bullet Journal</h1>
+        <h1>Online Bullet Journal</h1>
 
-        <nav class="home-menu">
-            <ul>
-                <li> <a href="{{path('booking.calendar')}}">Agenda</a></li>
-                <li> <a href="{{path('todolist.index')}}">ToDoList</a></li>
-                <li> <a href="{{path('mood.index')}}">Mood</a></li>
-                <li> <a href="{{path('note.index')}}">Notes</a></li>
-            </ul>
-        </nav>
+        <section id="bujo-explain">
+            <section id="bujo-agenda" class="bujo-explain-part">
+                <h2>Notez tous vos rendez-vous et événements sur un agenda en ligne</h2>
+                <div class="video-container">
+                    <video src=""></video>
+                    <p>Créez et gérez vos propres événements de manière simple et rapide.</p>
+                </div>
+            </section>
+            <section id="bujo-todolist" class="bujo-explain-part">
+                <h2>Créez des To Do Lists quotidiennes, et retrouvez celles d'hier.</h2>
+                <div class="video-container">
+                    <video src=""></video>
+                    <p>Aucune limite dans la création de To Do Lists. Retrouvez celles des jours précédents pour les valider. Ou les modifier.</p>
+                </div>
+            </section>
+            <section id="bujo-mood" class="bujo-explain-part">
+                <h2>Besoin d'un suivi de vos humeurs quotidiennes ?</h2>
+                <div class="video-container">
+                    <video src=""></video>
+                    <p>
+                        Chaque jour, remplissez un questionnaire qui vous demande l'humeur générale, accompagné d'un espace gratitude et note. <br>
+                        Ensuite, accédez au système d'archives qui vous permet de retrouver une journée précise, ou un graphique mensuel qui répertorie vos humeurs.
+                    </p>
+                    
+                </div>
+            </section>
+            <section id="bujo-notes" class="bujo-explain-part">
+                <h2>Rédigez des notes. Autant que vous voulez.</h2>
+                <div class="video-container">
+                    <video src="">
+                        <p>Vidéo ici</p>
+                    </video>
+                    <p>
+                        Créez des notes en temps réel, directement sur la page web. <br>
+                        Sauvegarde automatique toutes les minutes.
+                    </p>
+                </div>
+            </section>
+        </section>
+
+        <section id="contact">
+            <h2>Entrons en contact.</h2>
+            <p>Vous avez des questions sur ce projet, ou voulez un compte sécurisé pour pouvoir l'utiliser ? Contactez-moi.</p>
+            <a href="mailto:robbes.tyffany@gmail.com">robbes.tyffany@gmail.com</a> 
+            <a href="https://github.com/Kiwiggle">Profil Github</a>
+        </section>
     </div>
    
 {% endblock %}

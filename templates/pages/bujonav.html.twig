@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Online BuJo {% endblock %}
+
+{% block body %}
+
+    <div class="home-container">
+         <h1>Bullet Journal</h1>
+
+        <nav class="home-menu">
+            <ul>
+                <li> <a href="{{path('booking.calendar')}}">Agenda</a></li>
+                <li> <a href="{{path('todolist.index')}}">ToDoList</a></li>
+                <li> <a href="{{path('mood.index')}}">Mood</a></li>
+                <li> <a href="{{path('note.index')}}">Notes</a></li>
+            </ul>
+        </nav>
+    </div>
+   
+{% endblock %}
+
+

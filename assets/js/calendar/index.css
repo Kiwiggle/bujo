@@ -23,7 +23,7 @@
 
 #calendar h2, #event-click-result h3 {
   color:#fff;
-  text-shadow: 1px 1px 2px #ff73be;
+  text-shadow: 1px 1px 2px #77d07a;
 }
 
 #calendar .fc-view-container {
@@ -36,22 +36,22 @@
 }
 
 .fc-today-button, .fc-prev-button, .fc-next-button, .fc-button-group, .fc-prev-button:hover, .fc-next-button:hover {
-  background-color: #ff6397;
+  background-color: #31be36;
   border:none;
   border-radius:5px;
 }
 
 .fc-unthemed td.fc-today {
-  background: rgb(255, 220, 223);
+  background: rgb(253, 255, 220);
 }
 
 .fc-button-primary:disabled {
-  background-color: #ff6397;
+  background-color: #31be36;
 
 }
 
 .fc-button:hover, .fc-button-primary:hover {
-  background-color: #c90043;
+  background-color: #008e0c;
   text-decoration: none;
 }
 
@@ -88,6 +88,38 @@
   left:50%;
   transform:translateX(-50%);
   margin:auto;
+}
+
+/**
+*
+*
+* POPUP
+*
+*
+**/
+
+
+.popup {
+  display:none;
+
+  background-color: #fff;
+  border-radius:10px;
+
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  z-index:2;
+  width:80%;
+  height:95vh;
+}
+
+.popup h2 {
+  color: #ffe8c6;
+}
+
+.popup a {
+  color:#31be36;
 }
 
 

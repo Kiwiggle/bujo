@@ -11,7 +11,7 @@ label {
     text-align: left;
     color:#000;
     margin: 0 0 2% 0;
-    color: #ff6397;
+    color: #77d07a;
     font-size: 1.5em;
 }
 
@@ -20,9 +20,9 @@ input {
     height: 50px;
     font-size:1.5em;
     text-align:center;
-    border:1px solid #FAC1C7;
+    border:1px solid #ffd9a1;
     font-family: 'Prata', serif;
-    color: #ff6397;
+    color: #77d07a;
 }
 
 input[type="datetime-local"] {
@@ -101,7 +101,7 @@ form {
 
 .login-container a {
     text-decoration: underline;
-    color:#ff6397;
+    color:#77d07a;
 }
 
 .form-group {

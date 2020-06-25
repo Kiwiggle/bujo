@@ -25,18 +25,26 @@ function getMonthData(month) {
         url: Routing.generate('mood.archives.month', {month: month}),
         type: "POST",
         async: true, 
-        success: function(data) {
+        success: function(moods) {
             let date;
             let dataArray = [];
             let moodNumber;
             let i = 0;
 
+            /* 
+                Je créée un tableau de données qui remplira le graphique
+                j représente les jours du mois
+                i représente le numéro du mood à représenter sur le graphique    
+            */
             for (let j = 1; j <= 31; j++) {
-                if (data[i] != undefined) {
-                    date = new Date(data[i].date.date); 
+                if (moods[i] != undefined) {
+                    //On récupère la date du mood s'il existe
+                    date = new Date(moods[i].date.date); 
                     date = date.getDate();
+
+                    //si la date du mood == la date sur laquelle on est (j)
                     if (j == date) {
-                        moodNumber = checkMoodNumber(data[i]);
+                        moodNumber = checkMoodNumber(moods[i]);
                         dataArray.push(moodNumber);
                         i++
                     } else {
@@ -47,6 +55,8 @@ function getMonthData(month) {
                 }
                 
             }
+
+            //Une fois le tablea dataArray rempli, je l'envoie pour initialiser le graphique
             initChart(dataArray);
             
             
@@ -57,13 +67,14 @@ function getMonthData(month) {
       });
 }
 
-
+//Initialisation du Graphique
 function initChart(dataArray) {
     let months = []
     for (let i = 1 ; i <= 31 ; i++) {
         months.push(i);
     }
 
+    //Labels des ordonnées
     var yLabels = {
         0 : "Non renseigné",
         1 : 'Horrible',
@@ -81,8 +92,8 @@ function initChart(dataArray) {
                 data: dataArray,
                 borderWidth: 2,
                 backgroundColor: '#ff639706',
-                borderColor: '#ff6397',
-                pointBorderColor: "#c90043"
+                borderColor: '#008e0c',
+                pointBorderColor: "#008e0c"
             }]
         },
         options: {
@@ -114,19 +125,12 @@ function initChart(dataArray) {
             title: {
                 display: true,
                 text: 'Variation des émotions du mois (2020)'
-            },
-            color: [
-                'red',    // color for data at index 0
-                'blue',   // color for data at index 1
-                'green',  // color for data at index 2
-                'black',  // color for data at index 3
-                //...
-            ]
+            }
         }
     });
 }
 
-
+//Renvoie le numéro du mois
 function checkMonth(monthToCheck) {
     let month;
 
@@ -172,7 +176,7 @@ function checkMonth(monthToCheck) {
     return month;
 }
 
-
+//Renvoie le numéro du mood récupéré pour qu'il soit traité par le graphique
 function checkMoodNumber(mood) {
     let moodNumber;
     switch(mood.feeling) {
