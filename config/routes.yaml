@@ -5,22 +5,6 @@ logout:
 login:
   path: /login
   controller: App\Controller\SecurityController::login
-  
-booking.calendar:
-    path: /calendar
-    controller: App\Controller\BookingController::calendar
-
-booking.loadEvent:
-    path: /loadEvent/{id}
-    controller: App\Controller\BookingController::loadOneEvent
-    options:
-        expose: true
-
-dropUpdate:
-    path: /dropUpdate/{id}
-    controller: App\Controller\BookingController::dropUpdate
-    options:
-        expose: true
 
 mood.today:
     path: /mood/today

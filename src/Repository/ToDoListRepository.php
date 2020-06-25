@@ -29,11 +29,13 @@ class ToDoListRepository extends ServiceEntityRepository
 
     }
 
-    public function findByDate($date) {
+    public function findByDate($date, $user) {
         
         return $this->createQueryBuilder('todolist')
-            ->where("todolist.date = :date")
+            ->andWhere("todolist.date = :date")
+            ->andWhere("todolist.user = :user")
             ->setParameter('date', $date)
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult()
             ;

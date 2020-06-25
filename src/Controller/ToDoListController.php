@@ -12,12 +12,19 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
- * @Route("/todolist")
+ * @Route("/bujo/todolist")
  */
 class ToDoListController extends AbstractController
 {
+    public function __construct(Security $security) 
+    {
+        $this->security = $security;
+        $this->user = $this->getCurrentUserId();
+    }
+
     /**
      * @Route("/", name="todolist.index", methods={"GET"})
      */
@@ -26,7 +33,8 @@ class ToDoListController extends AbstractController
 
         //Je cherche la liste du jour
         $today = date('Y-m-d');
-        $todayList = $toDoListRepository->findByDate($today);
+        $user = $this->getCurrentUserId();
+        $todayList = $toDoListRepository->findByDate($today, $this->user);
 
         return $this->loadForms($todayList, $request, $today, 'index', 'index');
         
@@ -37,7 +45,7 @@ class ToDoListController extends AbstractController
      */
     public function previousList(Request $request, ToDoListRepository $toDoListRepository) {
         $date = $request->request->get('date');
-        $list = $toDoListRepository->findByDate($date);
+        $list = $toDoListRepository->findByDate($date, $this->user);
 
         $dateFormatted = new DateTime($date);
         $dateFormatted->format('d m Y');
@@ -73,6 +81,9 @@ class ToDoListController extends AbstractController
             $today->format('d-m-Y');
             $toDoList->setDate($today);
 
+            $user = $this->security->getUser();
+            $toDoList->setUser($user);
+
             $entityManager->persist($toDoList);
             $entityManager->flush();
 
@@ -91,7 +102,7 @@ class ToDoListController extends AbstractController
     public function edit($id, Request $request, ToDoList $toDoList, ToDoListRepository $toDoListRepo): Response
     {
         $date = $toDoList->getdate();
-        $list = $toDoListRepo->findByDate($date);
+        $list = $toDoListRepo->findByDate($date, $this->user);
 
         return $this->loadForms($list, $request, $date, 'edit', 'indexRedirect');
 
@@ -184,5 +195,11 @@ class ToDoListController extends AbstractController
     private function formatDateTime($date) {
         $formattedDate = new DateTime($date);
         $date = $formattedDate->format('d m Y');
+    }
+
+    private function getCurrentUserId() {
+        return $user = $this->security->getUser()
+            ->getId()
+        ;
     }
 }

@@ -8,18 +8,18 @@ use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\CalendarEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Security;
 
 class CalendarSubscriber implements EventSubscriberInterface
 {
     private $bookingRepository;
     private $router;
 
-    public function __construct(
-        BookingRepository $bookingRepository,
-        UrlGeneratorInterface $router
-    ) {
+    public function __construct(BookingRepository $bookingRepository, UrlGeneratorInterface $router, Security $security) 
+    {
         $this->bookingRepository = $bookingRepository;
         $this->router = $router;
+        $this->security = $security;
     }
 
     public static function getSubscribedEvents()
@@ -34,14 +34,18 @@ class CalendarSubscriber implements EventSubscriberInterface
         $start = $calendar->getStart();
         $end = $calendar->getEnd();
         $filters = $calendar->getFilters();
+        $user = $this->security->getUser();
+        $user = $user->getId();
 
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
-            ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
+            ->andWhere('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
+            ->andWhere('booking.user = :user')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult()
         ;

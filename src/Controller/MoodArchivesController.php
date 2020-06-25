@@ -10,12 +10,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
- * @Route("/mood/archives")
+ * @Route("/bujo/mood/archives")
  */
 class MoodArchivesController extends AbstractController
 {
+
+    public function __construct(Security $security) 
+    {
+        $this->security = $security;
+    }
     
     /**
      * @Route("/", name="mood.archives")
@@ -32,7 +38,10 @@ class MoodArchivesController extends AbstractController
             $date = $form->getViewData();
             $date = $date->getdate();
             $date = $date->format('Y-m-d');
-            $mood = $moodRepo->findByDate($date);
+
+            $user = $this->security->getUser();
+            $user = $user->getId();
+            $mood = $moodRepo->findByDate($date, $user);
 
             if (empty($mood)) {
                 return $this->render('mood/archives.html.twig', [
@@ -56,7 +65,9 @@ class MoodArchivesController extends AbstractController
      * @Route("/{month}", name="mood.archives.month", requirements={"month":"\d+"}, options={"expose"=true})
      */
     public function archivesMonth($month, Request $request, MoodRepository $moodRepo) {
-        $monthMood = $moodRepo->findByMonth($month);
+        $user = $this->security->getUser();
+        $user = $user->getId();
+        $monthMood = $moodRepo->findByMonth($month, $user);
 
         return new JsonResponse($monthMood);
     }

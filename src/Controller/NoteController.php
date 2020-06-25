@@ -3,27 +3,38 @@
 namespace App\Controller;
 
 use App\Entity\Note;
+use App\Entity\User;
 use App\Form\NoteType;
 use App\Repository\NoteRepository;
+use App\Repository\UserRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
- * @Route("/notes")
+ * @Route("/bujo/notes")
  */
 class NoteController extends AbstractController
 {
+
+    public function __construct(Security $security) 
+    {
+        $this->security = $security;
+    }
+
     /**
      * @Route("/", name="note.index", methods={"GET"}, options={"expose"=true})
      */
     public function index(NoteRepository $noteRepository): Response
     {
+        $user = $this->security->getUser();
+        $user = $user->getId();
         return $this->render('note/index.html.twig', [
-            'notes' => $noteRepository->findAll(),
+            'notes' => $noteRepository->findAllByUser($user),
         ]);
     }
 
@@ -40,6 +51,9 @@ class NoteController extends AbstractController
             $data = $request->request->all();
             $note->setTitle($data['title']);
             $note->setContent($data['outputData']);
+
+            $user = $this->security->getUser();
+            $note->setUser($user);
 
 
             $date = new DateTime();

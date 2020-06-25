@@ -10,12 +10,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
- * @Route("/mood")
+ * @Route("/bujo/mood")
  */
 class MoodController extends AbstractController
 {
+
+    public function __construct(Security $security) 
+    {
+        $this->security = $security;
+    }
+
     /**
      * @Route("/", name="mood.index", methods={"GET"})
      */
@@ -37,6 +44,10 @@ class MoodController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $user = $this->security->getUser();
+            $mood->setUser($user);
+
             $entityManager->persist($mood);
             $entityManager->flush();
 
@@ -87,7 +98,9 @@ class MoodController extends AbstractController
      */
     public function moodToday(Request $request, MoodRepository $moodRepo) {
         $today = date('Y-m-d');
-        $todayMood = $moodRepo->findByDate($today);
+        $user = $this->security->getUser();
+        $user = $user->getId();
+        $todayMood = $moodRepo->findByDate($today, $user);
 
         if (empty($todayMood)) {
             $newForm = $this->new('today', $request);

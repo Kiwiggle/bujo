@@ -10,14 +10,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
- * @Route("/booking")
+ * @Route("/bujo/calendar")
  */
 class BookingController extends AbstractController
 {
+
+    public function __construct(Security $security) 
+    {
+        $this->security = $security;
+    }
+
     /**
-     * @Route("/calendar", name="booking.calendar", methods={"GET"})
+     * @Route("/", name="booking.calendar", methods={"GET"})
      */
     public function calendar(Request $request): Response
     {
@@ -25,7 +32,7 @@ class BookingController extends AbstractController
     }
 
     /**
-     * @Route("calendar/new", name="booking_new", methods={"GET","POST"}, options={"expose"=true})
+     * @Route("/new", name="booking_new", methods={"GET","POST"}, options={"expose"=true})
      */
     public function new(Request $request): Response
     {
@@ -38,6 +45,10 @@ class BookingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $user = $this->security->getUser();
+            $booking->setUser($user);
+
             $entityManager->persist($booking);
             $entityManager->flush();
 
@@ -61,7 +72,7 @@ class BookingController extends AbstractController
     }
 
     /**
-     * @Route("calendar/{id}/edit", name="booking_edit", methods={"GET","POST"}, options={"expose"=true})
+     * @Route("/{id}/edit", name="booking_edit", methods={"GET","POST"}, options={"expose"=true})
      */
     public function edit(Request $request, Booking $booking): Response
     {

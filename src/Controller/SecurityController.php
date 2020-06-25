@@ -10,7 +10,7 @@ class SecurityController extends AbstractController {
 
 
     /**
-     * 
+     * Routes in the yaml
      */
     public function login(AuthenticationUtils $authenticationUtils) 
     {

@@ -28,25 +28,29 @@ class MoodRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findByDate($date) {
+    public function findByDate($date, $user) {
         return $this->createQueryBuilder('mood')
-            ->where("mood.date = :date")
+            ->andWhere("mood.date = :date")
+            ->andWhere("mood.user = :user")
             ->setParameter('date', $date)
+            ->setParameter('user', $user)
             ->getQuery()
             ->getResult()
             ;
     }
 
-    public function findByMonth($month) {
+    public function findByMonth($month, $user) {
 
         $start = new DateTime('2020-' . $month . '-01');
         $end = (clone $start)->modify('last day of this month');
 
         return $this->createQueryBuilder('mood')
-            ->where("mood.date BETWEEN :start AND :end")
+            ->andWhere("mood.date BETWEEN :start AND :end")
+            ->andWhere("mood.user = :user")
             ->orderBy("mood.date", 'ASC')
             ->setParameter('start', $start)
             ->setParameter('end', $end)
+            ->setParameter('user', $user)
             ->getQuery()
             ->getArrayResult()
             ;
