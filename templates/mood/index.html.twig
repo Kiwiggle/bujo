@@ -3,6 +3,8 @@
 {% block title %}Mood index{% endblock %}
 
 {% block body %}
+    {% include "nav/_nav.html.twig" %}
+
     <h1>Mood index</h1>
 
     <nav id="mood-nav">
@@ -20,7 +22,7 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    {{ encore_entry_script_tags('app') }}
     {{ encore_entry_script_tags('mood') }}
     
 {% endblock %}

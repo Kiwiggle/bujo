@@ -83,6 +83,109 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
     text-shadow: 1px 1px 2px #fff;
 }
 
+.login-link, #open-general-menu {
+    display: inline-block;
+
+    border-radius:15px;
+
+    background-color: #fff;
+    color:#27932b;
+
+    position:fixed;
+    top: 20px;
+    right: 20px;
+
+
+}
+
+.login-link {
+    width: 10%;
+    min-width:120px;
+    height: 40px;
+
+    line-height:2;
+
+
+    font-size:1.2em;
+}
+
+#open-general-menu, nav#nav-general-menu {
+    z-index:101;
+}
+
+#open-general-menu {
+
+    height:45px;
+    width:12%;
+
+    line-height:1.7;
+    min-width: 150px;
+
+    position: fixed;
+
+    margin:0;
+    cursor:pointer;
+}
+
+#open-general-menu i {
+    margin: 0 5% 0 0;
+}
+
+nav#nav-general-menu {
+    width: 100%;
+    height: 100vh;
+
+    position: absolute;
+    top:0;
+    left:-100%;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fff;
+    transition: 1s all;
+}
+
+nav#nav-general-menu #close-general-menu {
+    color:#27932b;
+    font-size:2.5em;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    cursor: pointer;
+}
+
+nav#nav-general-menu p {
+    color: #27932b;
+    font-size: 2.5em;
+}
+
+nav#nav-general-menu ul {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding:0;
+    margin:0;
+}
+
+nav#nav-general-menu ul li, nav#nav-general-menu ul li a {
+    font-size: 1.5em;
+    color: #27932b;
+    text-decoration: none;
+    list-style: none;
+    margin:5% 0;
+
+    transition: 0.5s all;
+}
+
+nav#nav-general-menu ul li a:hover {
+    color:#dabb0d;
+}
+
 /**
 *
 *
@@ -124,15 +227,29 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
     margin: auto 5%;
 }
 
-video {
-    width:40%;
-    border:1px solid white;
-}
 
-.video-container {
+figure {
     margin: 5% 0;
     display:flex;
     justify-content: center;
+}
+
+figure img {
+    width:50%;
+    box-shadow: 1px 1px 10px rgb(57, 57, 57);
+}
+
+figure .img-container {
+    width:50%;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+figure .img-container img {
+    margin: 2% 0;
+    width:100%;
 }
 
 #contact {

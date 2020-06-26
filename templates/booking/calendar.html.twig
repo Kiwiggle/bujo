@@ -2,6 +2,8 @@
 
 {% block body %}
     
+    {% include "nav/_nav.html.twig" %}
+
     <div class="calendar-container">
         <div id="calendar" data-events-url="{{ path('fc_load_events')}}"></div>
         <div id="event-click-result">
@@ -25,6 +27,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
     {{ encore_entry_script_tags('calendar') }}
     {{ encore_entry_script_tags('form') }}
 {% endblock %}

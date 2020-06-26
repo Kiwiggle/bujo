@@ -4,46 +4,55 @@
 
 {% block body %}
 
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include "nav/_nav.html.twig" %}
+    {% else %}
+        <a href="{{ path('login') }}" class="login-link">Connexion</a>
+    {% endif %}
+    
+    
+
     <div class="home-container">
         <h1>Online Bullet Journal</h1>
 
         <section id="bujo-explain">
             <section id="bujo-agenda" class="bujo-explain-part">
                 <h2>Notez tous vos rendez-vous et événements sur un agenda en ligne</h2>
-                <div class="video-container">
-                    <video src=""></video>
+                <figure>
+                    <img src="img/agenda.png" class="bujo-explain-img">
                     <p>Créez et gérez vos propres événements de manière simple et rapide.</p>
-                </div>
+                </figure>
             </section>
             <section id="bujo-todolist" class="bujo-explain-part">
                 <h2>Créez des To Do Lists quotidiennes, et retrouvez celles d'hier.</h2>
-                <div class="video-container">
-                    <video src=""></video>
+                <figure>
+                    <img src="img/todolist.png">
                     <p>Aucune limite dans la création de To Do Lists. Retrouvez celles des jours précédents pour les valider. Ou les modifier.</p>
-                </div>
+                </figure>
             </section>
             <section id="bujo-mood" class="bujo-explain-part">
                 <h2>Besoin d'un suivi de vos humeurs quotidiennes ?</h2>
-                <div class="video-container">
-                    <video src=""></video>
+                <figure>
+                    <div class="img-container">
+                        <img src="img/mood.png" alt="">
+                        <img src="img/graph.png" alt="">
+                    </div>
                     <p>
                         Chaque jour, remplissez un questionnaire qui vous demande l'humeur générale, accompagné d'un espace gratitude et note. <br>
                         Ensuite, accédez au système d'archives qui vous permet de retrouver une journée précise, ou un graphique mensuel qui répertorie vos humeurs.
                     </p>
                     
-                </div>
+                </figure>
             </section>
             <section id="bujo-notes" class="bujo-explain-part">
                 <h2>Rédigez des notes. Autant que vous voulez.</h2>
-                <div class="video-container">
-                    <video src="">
-                        <p>Vidéo ici</p>
-                    </video>
+                <figure>
+                    <img src="img/notes.png" alt="">
                     <p>
                         Créez des notes en temps réel, directement sur la page web. <br>
                         Sauvegarde automatique toutes les minutes.
                     </p>
-                </div>
+                </figure>
             </section>
         </section>
 
