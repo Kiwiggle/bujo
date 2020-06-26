@@ -100,6 +100,10 @@
     color:#77d07a;
 }
 
+.ce-toolbox__button {
+    color:#fff;
+}
+
 
 .ce-inline-toolbar__buttons, .ce-conversion-toolbar__tools, .ce-toolbar__plus:hover, .ce-toolbox__button--active, .ce-toolbox__button:hover {
     color: #77d07a;

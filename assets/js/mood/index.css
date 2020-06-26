@@ -183,8 +183,8 @@ div.archives {
 }
 
 #archives-nav div:hover {
-    background-color: #77d07a;
-    color:#fff;
+    background-color: #77d07a !important; 
+    color:#fff !important;
 }
 
 #archives-nav div:nth-child(1) {

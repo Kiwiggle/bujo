@@ -12,6 +12,13 @@ $(document).ready(function() {
 
     $('#mood div select').select2();
 
+    $('#archives-nav .month').click(function(info) {
+        let id = info.currentTarget.id;
+
+        $(".month").attr('style', 'background-color: #fff; color: #77d07a;');
+        $("#" + id).attr('style', 'background-color: #77d07a; color: #fff');
+    });
+
     $('#close-menu').click(function() {
         $('#archives-nav').attr('style', 'left:-100%');
     });

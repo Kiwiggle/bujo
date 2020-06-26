@@ -98,6 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   $('.form-container').remove();
                   $('.popup').append(data);
                   $('.popup').show();
+
+                  closePopUp();
                 },
                 error: function(data) {
                   console.log("erreur 2ème ajax : " + data.responseText);
@@ -125,6 +127,8 @@ $("#create-event").click(function() {
       $('.form-container').remove();
       $('.popup').append(data);
       $('.popup').show();
+
+      closePopUp();
     },
     error: function(data) {
       console.log("erreur 2ème ajax : " + data.responseText);
@@ -132,4 +136,13 @@ $("#create-event").click(function() {
   });
 
   $('.popup').show;
+
+  
 })
+
+function closePopUp() {
+  $('.close-popup').click(function(event) {
+    event.preventDefault();
+    $('.popup').hide();
+  });
+}

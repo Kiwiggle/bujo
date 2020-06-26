@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Mood;
 use App\Form\MoodType;
 use App\Repository\MoodRepository;
-use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -57,16 +56,6 @@ class MoodController extends AbstractController
         return $this->render('mood/'. $path .'.html.twig', [
             'mood' => $mood,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="mood.show", methods={"GET"}, requirements={"id"="\d+"})
-     */
-    public function show(Mood $mood): Response
-    {
-        return $this->render('mood/show.html.twig', [
-            'mood' => $mood,
         ]);
     }
 

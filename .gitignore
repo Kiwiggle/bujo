@@ -9,6 +9,7 @@
 /public/bundles/
 /var/
 /vendor/
+/src/DataFixtures/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

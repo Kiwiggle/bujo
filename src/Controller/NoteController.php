@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Note;
-use App\Entity\User;
 use App\Form\NoteType;
 use App\Repository\NoteRepository;
-use App\Repository\UserRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -67,21 +65,10 @@ class NoteController extends AbstractController
             return new Response();
         }
 
-        
 
         return $this->render('note/new.html.twig', [
             'note' => $note,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="note.show", methods={"GET"})
-     */
-    public function show(Note $note): Response
-    {
-        return $this->render('note/show.html.twig', [
-            'note' => $note,
         ]);
     }
 
@@ -123,7 +110,7 @@ class NoteController extends AbstractController
     /**
      * @Route("/get/{id}", name="note.get", methods={"GET"}, requirements={"id"="\d+"}, options={"expose"=true})
      */
-    public function getNote($id, Request $request, Note $note, NoteRepository $noteRepo): Response
+    public function getNote($id, Note $note, NoteRepository $noteRepo): Response
     {
         $note = $noteRepo->find($id);
         return new JsonResponse($note->getContent());
