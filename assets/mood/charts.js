@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import Chart from "../../../node_modules/chart.js/dist/Chart.js"
+import Chart from "../../node_modules/chart.js/dist/Chart.js"
 
-const routes = require('../../../public/js/fos_js_routes.json');
-import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+const routes = require('../../public/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
 Routing.setRoutingData(routes);
 
 $(document).ready(function() {
@@ -15,7 +15,12 @@ $(document).ready(function() {
 
         getMonthData(month);
 
-        Chart.defaults.global.defaultFontSize = 16;
+        window.addEventListener('resize', function() {
+            resizeChartFont();
+        });
+
+        resizeChartFont();
+        
         Chart.defaults.global.defaultFontColor = "#fff";
     })
 });
@@ -194,4 +199,12 @@ function checkMoodNumber(mood) {
             break;
     }
     return moodNumber;
+}
+
+function resizeChartFont() {
+    if(window.matchMedia('(max-width:600px)').matches) {
+        Chart.defaults.global.defaultFontSize = 12;
+    } else {
+        Chart.defaults.global.defaultFontSize = 20;
+    }
 }

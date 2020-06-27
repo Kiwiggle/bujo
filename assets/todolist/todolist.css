@@ -297,3 +297,9 @@ input:focus {
     min-width: 40px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  h1 {
+    margin-top:20%;
+  }
+}

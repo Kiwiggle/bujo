@@ -19,14 +19,18 @@
             <section id="bujo-agenda" class="bujo-explain-part">
                 <h2>Notez tous vos rendez-vous et événements sur un agenda en ligne</h2>
                 <figure>
-                    <img src="img/agenda.png" class="bujo-explain-img">
+                    <div class="img-container">
+                        <img src="img/agenda.png" class="bujo-explain-img">
+                    </div>
                     <p>Créez et gérez vos propres événements de manière simple et rapide.</p>
                 </figure>
             </section>
             <section id="bujo-todolist" class="bujo-explain-part">
                 <h2>Créez des To Do Lists quotidiennes, et retrouvez celles d'hier.</h2>
                 <figure>
-                    <img src="img/todolist.png">
+                    <div class="img-container">
+                        <img src="img/todolist.png">
+                    </div>
                     <p>Aucune limite dans la création de To Do Lists. Retrouvez celles des jours précédents pour les valider. Ou les modifier.</p>
                 </figure>
             </section>
@@ -47,7 +51,10 @@
             <section id="bujo-notes" class="bujo-explain-part">
                 <h2>Rédigez des notes. Autant que vous voulez.</h2>
                 <figure>
-                    <img src="img/notes.png" alt="">
+                    <div class="img-container">
+                        <img src="img/notes.png" alt="">
+                    </div>
+               
                     <p>
                         Créez des notes en temps réel, directement sur la page web. <br>
                         Sauvegarde automatique toutes les minutes.
@@ -64,6 +71,16 @@
         </section>
     </div>
    
+{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ encore_entry_script_tags('home') }}
+    
 {% endblock %}
 
 

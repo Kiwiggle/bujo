@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
         <title>{% block title %}{% endblock %}</title>
         
         
         <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;family=Prata&amp;display=swap" rel="stylesheet">        
-        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('general') }}
         {% block stylesheets %}{% endblock %}
         
     </head>
@@ -14,7 +15,7 @@
         {% block body %}{% endblock %}
 
         <script src="https://kit.fontawesome.com/1331d14730.js" crossorigin="anonymous"></script>
-        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('general') }}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

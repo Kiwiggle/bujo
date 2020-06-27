@@ -1,4 +1,4 @@
-import "./index.css"; // this will create a form.css file reachable to 'encore_entry_link_tags'
+import "./form.css"; // this will create a form.css file reachable to 'encore_entry_link_tags'
 
 
 window.addEventListener("load", function() {

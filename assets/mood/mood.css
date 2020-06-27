@@ -157,7 +157,7 @@ div.archives {
     justify-content: space-between;
 }
 
-#close-menu, #open-menu {
+#close-menu, #open-archives-menu {
     display:none;
 }
 
@@ -291,6 +291,7 @@ div.archives {
     }
 
     #archives-nav {
+        z-index:102;
         left:-100%;
         position: absolute;
         top:0;
@@ -305,22 +306,58 @@ div.archives {
         margin: 0 1% 0 0;
     }
 
-    div #close-menu, #open-menu {
+    #nav-buttons #open-general-menu, #open-archives-menu {
+        position: initial;
+        margin: 0 2%;
+    }
+
+    #nav-buttons {
+        margin: 2% 0 2% 0;
+        width:100%;
+        height:150px;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    div #close-menu, #open-archives-menu {
         display:inline-block;
         font-size: 30px;
         color:#fff;
-        position: absolute;
-        top: 1%;
-        right: 2%;
         z-index: 100;
     }
 
-    #open-menu {
-        z-index:0;
+    div #close-menu {
+        position:absolute;
+        top: 1.5%;
+        left: 20px;
+        color:#fff;
+    }
+
+    #open-archives-menu {
+        height: 45px;
+        width: 25%;
+        padding:1% 1% 1% 4%;
+        border-radius: 15px;
+        min-width:175px;
+        line-height: 1.5;
+        background-color: #27932b;
+        box-shadow: 1px 1px 10px #fff;
+        color:#fff;
+        cursor: pointer;
+    }
+
+    #open-archives-menu::after {
+        content:"Archives";
+        font-family: 'Permanent Marker', cursive;
+        margin: 0 0 0 5%;
     }
 
     #archives-nav div:nth-child(1):hover ~ #close-menu {
-        color:#77d07a;
+        color:#fff;
+        cursor: pointer;
     }
 
     .mood-search {
@@ -329,5 +366,32 @@ div.archives {
 
     #chart {
         width: 95%;
+    }
+
+    label {
+        padding: 0 5%;
+        text-align: center;
+    }
+}
+
+@media screen and (orientation:landscape) {
+    .month, .form {
+        min-height:50px;
+    }
+
+    div #close-menu {
+        top: 3%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        margin-top: 30%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    h1 {
+        margin-top: 50%;
     }
 }

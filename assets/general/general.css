@@ -90,12 +90,17 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
 
     background-color: #fff;
     color:#27932b;
+    box-shadow: 2px 2px 10px #27932b ;
 
     position:fixed;
     top: 20px;
     right: 20px;
 
 
+}
+
+.login-link, #open-general-menu, nav#nav-general-menu p {
+    font-family: 'Permanent Marker', cursive;
 }
 
 .login-link {
@@ -186,89 +191,6 @@ nav#nav-general-menu ul li a:hover {
     color:#dabb0d;
 }
 
-/**
-*
-*
-* HOME
-*
-*
-**/
-
-
-.home-container {
-    margin:auto;
-    min-height: 100vh;
-    width:90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#bujo-explain {
-    width:100%;
-}
-
-#bujo-explain section {
-    width:100%;
-    margin: 5% 0;
-}
-
-.home-container h2 {
-    font-size:2em;
-    text-align: center;
-}
-
-.bujo-explain-part p {
-    font-size: 1.5em;
-    max-width:450px;
-    padding: 2%;
-    line-height:1.5;
-    margin: auto 5%;
-}
-
-
-figure {
-    margin: 5% 0;
-    display:flex;
-    justify-content: center;
-}
-
-figure img {
-    width:50%;
-    box-shadow: 1px 1px 10px rgb(57, 57, 57);
-}
-
-figure .img-container {
-    width:50%;
-
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-figure .img-container img {
-    margin: 2% 0;
-    width:100%;
-}
-
-#contact {
-    display: flex;
-    flex-direction: column;
-    margin : 0 0 5% 0;
-}
-
-#contact a {
-    font-size: 1.5em;
-    cursor:pointer;
-}
-#contact a:hover {
-    text-decoration: underline;
-}
-
-#contact h2 {
-    font-size: 2.5em;
-}
 
 
 
@@ -323,7 +245,13 @@ figure .img-container img {
 *
 **/
 
-@media screen and (max-width:600px) {
+@media screen and (max-width: 900px) {
+    h1 {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width:800px) {
     .home-menu ul {
         flex-direction: column;
         align-items: center;
@@ -331,5 +259,49 @@ figure .img-container img {
 
     nav.home-menu ul li {
         margin: 4% 0;
+    }
+
+    section .bujo-explain-part, section#contact {
+        width:100%;
+    }
+
+    .home-container h1 {
+        font-size: 2em;
+        margin-top: 23%;
+    }
+
+    .home-container h2, .home-container section h2 {
+        font-size:1.8em;
+        margin: 10% 0;
+    }
+
+    .home-container p {
+        font-size: 1.5em;
+        margin: 1% 0;
+        padding: 2%;
+    }
+
+    .home-container #contact a {
+        font-size:1.2em;
+    }
+
+    figure {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    figure img {
+        width: 95%;
+        margin: 2% 0;
+    }
+
+    figure .img-container {
+        width:95%;
+    }
+
+    figure .img-container img{
+        width: 100%;
     }
 }

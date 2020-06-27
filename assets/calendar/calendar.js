@@ -5,8 +5,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import frLocale from '@fullcalendar/core/locales/fr';
 
-const routes = require('../../../public/js/fos_js_routes.json');
-import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+const routes = require('../../public/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
 Routing.setRoutingData(routes);
 
 import $ from 'jquery';
@@ -15,11 +15,17 @@ import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 
 
-import "./index.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
+import "./calendar.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
 
 
 //Init FullCalendar
 document.addEventListener('DOMContentLoaded', function() {
+
+  orientation();
+  window.addEventListener('orientationchange', function() {
+    orientation();
+  }); 
+
   var calendarEl = document.getElementById('calendar');
 
   var eventsUrl = calendarEl.dataset.eventsUrl;
@@ -146,3 +152,12 @@ function closePopUp() {
     $('.popup').hide();
   });
 }
+
+function orientation() {
+  if (window.innerHeight > window.innerWidth) {
+      if(window.matchMedia('(max-width:600px)').matches) {
+          alert('Pour une meilleure utilisation, passez votre appareil en mode paysage')
+      }
+  }
+}
+

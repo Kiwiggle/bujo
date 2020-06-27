@@ -1,7 +1,13 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {% include "nav/_nav.html.twig" %}
+
+    <nav id="nav-buttons">
+        <i id="open-archives-menu" class="fas fa-bars"></i>
+        {% include "nav/_nav.html.twig" %}
+    </nav>
+        
+    
     
     <div class="archives">
          <nav id="archives-nav">
@@ -21,7 +27,7 @@
             <i class="fas fa-times" id="close-menu"></i>
         </nav>
 
-        <i id="open-menu" class="fas fa-bars"></i>
+       
 
         <div id="chart">
             <canvas id="myChart"></canvas>
@@ -56,7 +62,6 @@
 
 
 {% block stylesheets %}
-    {{ encore_entry_link_tags('app') }}
     {{ encore_entry_link_tags('mood') }}
 {% endblock %}
 

@@ -1,12 +1,12 @@
 import $ from 'jquery';
-import "./index.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
-import Editor from '../../../node_modules/@editorjs/editorjs/dist/editor.js';
+import "./note.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
+import Editor from '@editorjs/editorjs/dist/editor';
 const Header = require('@editorjs/header');
 const List = require('@editorjs/list');
 const Paragraph = require('@editorjs/paragraph');
 
-const routes = require('../../../public/js/fos_js_routes.json');
-import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+const routes = require('../../public/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
 import { setInterval } from 'core-js';
 Routing.setRoutingData(routes);
 
