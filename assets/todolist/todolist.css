@@ -302,4 +302,8 @@ input:focus {
   h1 {
     margin-top:20%;
   }
+
+  .done {
+    width:20%;
+  }
 }

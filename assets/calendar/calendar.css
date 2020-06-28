@@ -114,6 +114,17 @@
   height:95vh;
 }
 
+.popup-background {
+  display: none;
+  position: fixed;
+  z-index:1;
+  width: 126%;
+  height: 105.6%;
+  background-color: rgba(0,0,0,0.5);
+  top: -2.7%;
+  left: -13%;
+}
+
 .popup h2 {
   color: #ffe8c6;
 }
@@ -151,7 +162,24 @@
     }
 }
 
+@media screen and (orientation:landscape) {
+  .popup h2::after {
+    display:block;
+    content:'(Scrollez pour remplir tous les champs)';
+    font-size:0.5em;
+    color: #31be36;
+    text-shadow: none;
+    font-family: 'Prata', serif;
+  }
+
+  .popup .form-container form {
+    max-height: 100px;
+    margin: 1% 0;
+  }
+}
+
 @media screen and (max-width:820px) {
+
   #event-click-result {
     min-height:470px;
   }
@@ -162,9 +190,11 @@
   }
 
   .popup h2 {
-    font-size: 2.3em;
+    font-size: 1.8em;
     margin: 4% 0;
   }
+
+
 
   .popup form {
     margin: 4% 0;
@@ -186,6 +216,20 @@
 @media screen and (max-width:830px) {
   #calendar {
     margin-top: 15%;
+  }
+
+  .form-container form {
+    overflow:scroll;
+    justify-content: flex-start;
+  }
+
+  .form-container {
+    height:auto;
+  }
+
+  .form-container label{
+    font-size:1.2em;
+    margin:0;
   }
 }
 

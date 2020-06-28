@@ -21,9 +21,10 @@ import "./calendar.css"; // this will create a calendar.css file reachable to 'e
 //Init FullCalendar
 document.addEventListener('DOMContentLoaded', function() {
 
+  //Prévient l'user que l'orientation paysage est conseillée pour l'utilisation de l'app
   orientation();
   window.addEventListener('orientationchange', function() {
-    orientation();
+    setTimeout(orientation, 200);
   }); 
 
   var calendarEl = document.getElementById('calendar');
@@ -103,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   console.log('ok');
                   $('.form-container').remove();
                   $('.popup').append(data);
+                  $('.popup-background').show();
                   $('.popup').show();
 
                   closePopUp();
@@ -132,6 +134,7 @@ $("#create-event").click(function() {
     success: function(data) {
       $('.form-container').remove();
       $('.popup').append(data);
+      $('.popup-background').show();
       $('.popup').show();
 
       closePopUp();
@@ -150,14 +153,13 @@ function closePopUp() {
   $('.close-popup').click(function(event) {
     event.preventDefault();
     $('.popup').hide();
+    $('.popup-background').hide();
   });
 }
 
 function orientation() {
   if (window.innerHeight > window.innerWidth) {
-      if(window.matchMedia('(max-width:600px)').matches) {
-          alert('Pour une meilleure utilisation, passez votre appareil en mode paysage')
-      }
+      alert('Pour une meilleure utilisation de l\'agenda, passez votre appareil en mode paysage')
   }
 }
 

@@ -195,3 +195,22 @@ form #note div input {
 input:focus {
     outline: none;
 }
+
+@media screen and (orientation:portrait) and (max-width:600px) {
+    h1 {
+        margin-top:20%;
+    }
+
+    form #note {
+        width:90%
+    }
+
+    #editor {
+        width:100%;
+    }
+
+    form #note div input {
+        font-size: 0.8em;
+    }
+}
+

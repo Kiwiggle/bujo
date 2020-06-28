@@ -16,5 +16,5 @@ $('#close-general-menu').click(function() {
 });
 
 $('#open-general-menu').click(function(){
-    $('#nav-general-menu').attr('style', 'left:0; overflow:hidden; position:fixed;');
+    $('#nav-general-menu').attr('style', 'left:0; position:fixed;');
 });

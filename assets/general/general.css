@@ -119,7 +119,6 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
 }
 
 #open-general-menu {
-
     height:45px;
     width:12%;
 
@@ -139,6 +138,8 @@ nav.home-menu ul li:hover a, #mood-nav ul li:hover a {
 nav#nav-general-menu {
     width: 100%;
     height: 100vh;
+
+    overflow:scroll;
 
     position: absolute;
     top:0;
@@ -251,57 +252,12 @@ nav#nav-general-menu ul li a:hover {
     }
 }
 
-@media screen and (max-width:800px) {
-    .home-menu ul {
-        flex-direction: column;
-        align-items: center;
-    }
+@media screen and (orientation:landscape) and (max-width: 900px) {
 
-    nav.home-menu ul li {
-        margin: 4% 0;
+    nav#nav-general-menu p {
+        font-size:1.5em;
     }
-
-    section .bujo-explain-part, section#contact {
-        width:100%;
-    }
-
-    .home-container h1 {
-        font-size: 2em;
-        margin-top: 23%;
-    }
-
-    .home-container h2, .home-container section h2 {
-        font-size:1.8em;
-        margin: 10% 0;
-    }
-
-    .home-container p {
-        font-size: 1.5em;
-        margin: 1% 0;
-        padding: 2%;
-    }
-
-    .home-container #contact a {
-        font-size:1.2em;
-    }
-
-    figure {
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    figure img {
-        width: 95%;
-        margin: 2% 0;
-    }
-
-    figure .img-container {
-        width:95%;
-    }
-
-    figure .img-container img{
-        width: 100%;
+    nav#nav-general-menu ul li a {
+        font-size: 1em
     }
 }
