@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @Route("/bujo/todolist")
@@ -37,6 +38,7 @@ class ToDoListController extends AbstractController
         $user = $this->getCurrentUserId();
         $todayList = $toDoListRepository->findByDate($today, $this->user);
 
+        $today = new DateTime($today);
         return $this->loadForms($todayList, $request, $today, 'index', 'index');
         
     }
@@ -155,7 +157,9 @@ class ToDoListController extends AbstractController
 
             //Je formate la date pour le rendu HTML
             if (is_object($date)) {
-                $this->formatDateTime($date->date);
+    
+                $date = $date->format('d m Y');
+                
             } else {
                 $this->formatDateTime($date);
             }

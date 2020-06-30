@@ -76,9 +76,8 @@ class BookingController extends AbstractController
      * @Route("/{id}/edit", name="booking_edit", methods={"GET","POST"}, options={"expose"=true})
      * Requête Ajax - envoie le form pour éditer un événement
      */
-    public function edit($id, Request $request, Booking $booking, BookingRepository $bookingRepo): Response
+    public function edit(Request $request, Booking $booking): Response
     {
-        $currentBooking = $bookingRepo->find($id);
         $form = $this->createForm(BookingType::class, $booking, array(
             'action'=> $this->generateUrl('booking_edit', ['id' => $booking->getId()]),
             'method' => 'GET'

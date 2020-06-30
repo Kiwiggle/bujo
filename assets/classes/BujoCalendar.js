@@ -95,7 +95,7 @@ export class BujoCalendar {
                             },
                             error: function(data) {
                                 alert('Erreur côté serveur');
-                                console.log("erreur 2ème ajax : " + data.responseText);
+                                console.log("erreur 2ème ajax : " + data);
                             }
                         });
                     })

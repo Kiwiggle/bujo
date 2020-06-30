@@ -5,29 +5,33 @@
 {% block body %}
     {% include "nav/_nav.html.twig" %}
 
-    <h1>Mood du jour</h1>
+    <div class="index-design">
+        <h1>Mood du jour</h1>
     
-    {% if today is defined %}
-         {% for today in today %}
+        {% if today is defined %}
+            {% for today in today %}
 
-            <div id="today-mood">
-                <div class="data">
-                    <p>Feeling : {{today.feeling}}</p>
-                    <p>Date : {{today.date|date('d m Y')}}</p>
-                    <p>Gratitude : {{today.gratitude}}</p>
-                    <p>Note : {{today.note}}</p>
+                <div id="today-mood">
+                    <div class="data">
+                        <p>Feeling : {{today.feeling}}</p>
+                        <p>Date : {{today.date|date('d m Y')}}</p>
+                        <p>Gratitude : {{today.gratitude}}</p>
+                        <p>Note : {{today.note}}</p>
 
-                    {% set id = today.id %}
-                    <div class="edit-button">
-                        <a href="{{ path('mood.edit', {id: id}) }}" class="btn fc-button-primary">Modifier</a>  
+                        {% set id = today.id %}
+                        <div class="edit-button">
+                            <a href="{{ path('mood.edit', {id: id}) }}" class="btn fc-button-primary">Modifier</a>  
+                        </div>
                     </div>
                 </div>
-            </div>
-           
-        {% endfor %}
-    {% else %} 
-        {% include "mood/_form.html.twig" %}
-    {% endif %}
+            
+            {% endfor %}
+        {% else %} 
+            {% include "mood/_form.html.twig" %}
+        {% endif %}
+
+    </div>
+    
 
 {% endblock %}
 
