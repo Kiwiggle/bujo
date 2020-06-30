@@ -7,12 +7,6 @@ import $ from 'jquery';
 
 $(document).ready(function() {
 
-    //Teste l'orientation de l'appareil et corrige le design en fonction
-    orientation();
-    window.addEventListener('orientationchange', function() {
-        orientation();
-    });
-
     //Traduction des <select>
     let dates = new Dates();
     dates.translateSelect('#date_date_month');
@@ -63,22 +57,4 @@ $(document).ready(function() {
     })
 });
 
-function orientation() {
-    if (window.innerHeight > window.innerWidth) {
-        if(window.matchMedia('(max-width:950px)').matches) {
-            $("#nav-buttons").attr('style', 'margin: 2% 0 2% 0;');
-        }
-    } else {
-        if(window.matchMedia('(max-width:950px)').matches) {
-            $('#archives-nav .month').click(function(info) {
-                $("#nav-buttons").attr('style', 'margin: 15% 0 5% 0;')
-            });
-            $('#archives-nav .form-search-mood').click(function() {
-                $("#nav-buttons").attr('style', 'margin: 2% 0 2% 0;')
-            })
-        }
-        
-    }
-
-}
 

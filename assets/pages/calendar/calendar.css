@@ -109,15 +109,17 @@
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-  z-index:2;
+  z-index:105;
   width:80%;
   height:95vh;
+
+  overflow:scroll;
 }
 
 .popup-background {
   display: none;
   position: fixed;
-  z-index:1;
+  z-index:105;
   width: 126%;
   height: 105.6%;
   background-color: rgba(0,0,0,0.5);
@@ -203,6 +205,10 @@
     width:100%;
   }
 
+  .popup .form.dates-form div {
+    width:100%;
+  }
+
   #calendar {
     margin-top: 15%;
   }
@@ -244,7 +250,7 @@
     margin-top: 20%;
   }
 
-  h2 {
+  .popup h2 {
     font-size: 1.6em;
   }
 }

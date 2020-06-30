@@ -75,7 +75,7 @@ export class NoteEditor {
 
     //Inititalise Editor.js avec plugins paragraphe, titre et liste
     initEditor(ElementId, data = null) {
-        console.log(ElementId);
+
         return new Editor({
             holder: ElementId,
             tools: {

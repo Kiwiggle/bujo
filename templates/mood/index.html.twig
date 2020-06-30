@@ -5,14 +5,17 @@
 {% block body %}
     {% include "nav/_nav.html.twig" %}
 
-    <h1>Mood index</h1>
+    <div class="index-design">
+        <h1>Mood index</h1>
 
-    <nav id="mood-nav">
-        <ul>
-            <li><a href="{{path('mood.today')}}">Mood du jour</a></li>
-            <li><a href="{{path('mood.archives')}}">Archives</a></li>
-        </ul>
-    </nav>
+        <nav id="mood-nav">
+            <ul>
+                <li><a href="{{path('mood.today')}}">Mood du jour</a></li>
+                <li><a href="{{path('mood.archives')}}">Archives</a></li>
+            </ul>
+        </nav>
+    </div>
+    
 {% endblock %}
 
 

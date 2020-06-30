@@ -155,7 +155,6 @@ class ToDoListController extends AbstractController
 
             //Je formate la date pour le rendu HTML
             if (is_object($date)) {
-                dump($date);
                 $this->formatDateTime($date->date);
             } else {
                 $this->formatDateTime($date);

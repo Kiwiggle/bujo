@@ -1,0 +1,11 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Erreur 500</h1>
+
+    <p>
+        Oups ! Le serveur a rencontré un problème. <br>
+        <a href="{{ path('bujo.home') }}">retournez à la page d'accueil</a>.
+    </p>
+{% endblock %}

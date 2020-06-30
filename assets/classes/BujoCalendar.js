@@ -39,6 +39,7 @@ export class BujoCalendar {
             locales: frLocale,
             locale: 'fr',
             timeZone: "UTC",
+            editable:false,
             eventSources: [
                 {
                     url: that.eventsUrl,
@@ -52,11 +53,6 @@ export class BujoCalendar {
                 },
             ],
         
-            //En cas de drag&drop d'un événement
-            eventDrop: function(info) {
-                that.eventDragDrop(info);
-            },
-        
             //Clic sur un événement
             eventClick: function(info) {
                 that.eventOnClick(info);
@@ -64,40 +60,6 @@ export class BujoCalendar {
         });
 
         calendar.render();
-    }
-
-    eventDragDrop(info) {
-
-        if (!confirm("Souhaitez-vous modifier la date de l'événement ?")) {
-
-            info.revert();
-
-        } else {
-
-            let start = info.event.start.toISOString();
-            let end = info.event.end.toISOString();
-            let url = info.event.url;
-            let id = url.match(/(\d+)/); //Pour récupérer l'id de l'event
-
-            $.ajax({
-                url: Routing.generate('dropUpdate', {id: id[0]}),
-                type: "POST",
-                dataType: "json",
-                data: {
-                    "start": start,
-                    "end": end,
-                    "id": id[0]
-                },
-                async: true, 
-                success: function(data) {
-                    alert(data.success);
-                },
-                error: function(data) {
-                    alert(data.error);
-                }
-            });
-
-        } 
     }
 
     eventOnClick(info) {

@@ -2,31 +2,33 @@
 
 {% block body %}
 
-    <nav id="nav-buttons">
-        <i id="open-archives-menu" class="fas fa-bars"></i>
-        {% include "nav/_nav.html.twig" %}
+    
+
+    <nav id="archives-nav">
+        <div class="form-search-mood"><i class="fas fa-search"></i><p>Rechercher</p></div>
+        <div class="month" id="january"><p>Janvier</p></div>
+        <div class="month" id="february"><p>Février</p></div>
+        <div class="month" id="march"><p>Mars</p></div>
+        <div class="month" id="april"><p>Avril</p></div>
+        <div class="month" id="may"><p>Mai</p></div>
+        <div class="month" id="june"><p>Juin</p></div>
+        <div class="month" id="july"><p>Juillet</p></div>
+        <div class="month" id="august"><p>Août</p></div>
+        <div class="month" id="september"><p>Septembre</p></div>
+        <div class="month" id="october"><p>Octobre</p></div>
+        <div class="month" id="november"><p>Novembre</p></div>
+        <div class="month" id="december"><p>Décembre</p></div>
+        <i class="fas fa-times" id="close-menu"></i>
     </nav>
         
     
     
     <div class="archives">
-         <nav id="archives-nav">
-            <div class="form-search-mood"><i class="fas fa-search"></i><p>Rechercher</p></div>
-            <div class="month" id="january"><p>Janvier</p></div>
-            <div class="month" id="february"><p>Février</p></div>
-            <div class="month" id="march"><p>Mars</p></div>
-            <div class="month" id="april"><p>Avril</p></div>
-            <div class="month" id="may"><p>Mai</p></div>
-            <div class="month" id="june"><p>Juin</p></div>
-            <div class="month" id="july"><p>Juillet</p></div>
-            <div class="month" id="august"><p>Août</p></div>
-            <div class="month" id="september"><p>Septembre</p></div>
-            <div class="month" id="october"><p>Octobre</p></div>
-            <div class="month" id="november"><p>Novembre</p></div>
-            <div class="month" id="december"><p>Décembre</p></div>
-            <i class="fas fa-times" id="close-menu"></i>
+        
+        <nav id="nav-buttons">
+            <i id="open-archives-menu" class="fas fa-bars"></i>
+            {% include "nav/_nav.html.twig" %}
         </nav>
-
        
 
         <div id="chart">

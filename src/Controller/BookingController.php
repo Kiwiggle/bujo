@@ -76,8 +76,9 @@ class BookingController extends AbstractController
      * @Route("/{id}/edit", name="booking_edit", methods={"GET","POST"}, options={"expose"=true})
      * Requête Ajax - envoie le form pour éditer un événement
      */
-    public function edit(Request $request, Booking $booking): Response
+    public function edit($id, Request $request, Booking $booking, BookingRepository $bookingRepo): Response
     {
+        $currentBooking = $bookingRepo->find($id);
         $form = $this->createForm(BookingType::class, $booking, array(
             'action'=> $this->generateUrl('booking_edit', ['id' => $booking->getId()]),
             'method' => 'GET'
@@ -151,11 +152,15 @@ class BookingController extends AbstractController
         $booking = $bookingRepo->find($id);
 
         return new Response (
-            '<div class="event-card"> <h3>' . $booking->getTitle(). '</h3> 
-            <p> Description : ' . $booking->getDescription() . ' </p> 
-            <p> Début le : ' . $booking->getBeginAt()->format('d/m/Y à H:i') . ' </p> 
-            <p> Fin le : ' . $booking->getEndAt()->format('d/m/Y à H:i') . ' </p> 
-            <p> Adresse : ' . $booking->getPlace() . ' </p>
+            '<div class="event-card"> 
+                <div class="event-card-design">
+                    <h3>' . $booking->getTitle(). '</h3> 
+                    <p> Description : ' . $booking->getDescription() . ' </p> 
+                    <p> Début le : ' . $booking->getBeginAt()->format('d/m/Y à H:i') . ' </p> 
+                    <p> Fin le : ' . $booking->getEndAt()->format('d/m/Y à H:i') . ' </p> 
+                    <p> Adresse : ' . $booking->getPlace() . ' </p>
+                    <a id="edit-event" class="btn fc-button-primary">Modifier l\'événement</a>
+                </div>
             </div>'
         );
 
