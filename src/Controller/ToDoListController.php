@@ -27,6 +27,7 @@ class ToDoListController extends AbstractController
 
     /**
      * @Route("/", name="todolist.index", methods={"GET"})
+     * Envoie la To Do List d'aujourd'hui
      */
     public function index(Request $request, ToDoListRepository $toDoListRepository): Response
     {
@@ -42,6 +43,7 @@ class ToDoListController extends AbstractController
 
     /**
      * @Route("/previous", name="todolist.previous", options={"expose"=true}, methods={"GET", "POST"})
+     * Ajax - envoie la To Do List précédente (peut être renouvelé)
      */
     public function previousList(Request $request, ToDoListRepository $toDoListRepository) {
         $date = $request->request->get('date');
@@ -55,6 +57,7 @@ class ToDoListController extends AbstractController
 
     /**
      * @Route("/new", name="todolist.new", methods={"GET","POST"}, options={"expose"=true})
+     * Création d'une nouvelle tâche dans la To Do List d'aujourd'hui seulement
      */
     public function new(Request $request): Response
     {
@@ -62,9 +65,12 @@ class ToDoListController extends AbstractController
         $form = $this->createFormBuilder($toDoList, array(
             'action'=> $this->generateUrl('todolist.new'),
             'method' => 'POST',
-        ))
+            ))
             ->add('name', TextType::class, [
-                'label' => "Nom : "
+                'label' => "Nom : ",
+                'attr' => [
+                    'placeholder' => 'Écrire ici...'
+                ]
             ])
             ->add('done', CheckboxType::class, [
                 'label' => 'Fait : ',
@@ -98,6 +104,7 @@ class ToDoListController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="todolist.edit", methods={"GET","POST"})
+     * Modification d'une entrée de la To Do List (une entrée à la fois seulement)
      */
     public function edit($id, Request $request, ToDoList $toDoList, ToDoListRepository $toDoListRepo): Response
     {
@@ -120,6 +127,9 @@ class ToDoListController extends AbstractController
         return $this->redirectToRoute('todolist.index');
     }
 
+    /**
+     * Cette fonction permet de créer et gérer les To Do List avec des variables dynamiques
+     */
     private function loadForms(array $list, Request $request, $date, string $formUrl, string $templateName) {
 
         if (! $list == null) {
@@ -165,12 +175,15 @@ class ToDoListController extends AbstractController
         } else {
 
             return $this->render('to_do_list/'. $templateName .'.html.twig', [
-                'error' => 'Créez une nouvelle liste :)'
+                'error' => 'Appuyez sur le bouton + pour démarrer une To Do List !'
             ]);
 
         }
     }
 
+    /**
+     * Change le action="..." de la balise <form> en fonction de la route
+     */
     private function createFormAction($formUrl, $list) {
         if($formUrl == "index") {
             $formAction = $this->generateUrl('todolist.' . $formUrl);
@@ -192,11 +205,13 @@ class ToDoListController extends AbstractController
         return ${"form" . $index}->handleRequest($request);
     }
 
+    //Formate la date
     private function formatDateTime($date) {
         $formattedDate = new DateTime($date);
         $date = $formattedDate->format('d m Y');
     }
 
+    //Récupère l'id de l'utilisateur en cours (connecté)
     private function getCurrentUserId() {
         return $user = $this->security->getUser()
             ->getId()

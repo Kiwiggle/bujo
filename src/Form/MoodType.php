@@ -15,11 +15,11 @@ class MoodType extends AbstractType
     {
         $builder
             ->add('feeling', ChoiceType::class, [
-                'label' => "Comment t'es tu sentie aujourd'hui ? ",
+                'label' => "Comment t'es tu senti(e) aujourd'hui ? ",
                 'choices' => $this->getChoices()
             ])
             ->add('gratitude', TextType::class, [
-                'label' => "Qu'est ce qui t'a rendue heureuse aujourd'hui ? ",
+                'label' => "Qu'est ce qui t'a rendu(e) heureux(se) aujourd'hui ? ",
                 "required" => false
             ])
             ->add('note', TextType::class, [

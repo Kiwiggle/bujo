@@ -38,7 +38,7 @@ class CalendarSubscriber implements EventSubscriberInterface
         $user = $user->getId();
 
         // Modify the query to fit to your entity and needs
-        // Change booking.beginAt by your start date property
+        // Cherche tous les événements liés à un user
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
             ->andWhere('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
@@ -51,11 +51,11 @@ class CalendarSubscriber implements EventSubscriberInterface
         ;
 
         foreach ($bookings as $booking) {
-            // this create the events with your data (here booking data) to fill calendar
+            // Création des événements avec les données récupérées pour remplir le calendar
             $bookingEvent = new Event(
                 $booking->getTitle(),
                 $booking->getBeginAt(),
-                $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
+                $booking->getEndAt() 
             );
 
             /*
@@ -69,6 +69,7 @@ class CalendarSubscriber implements EventSubscriberInterface
                 'backgroundColor' => '#77d07a',
                 'borderColor' => '#77d07a'
             ]);
+
             $bookingEvent->addOption(
                 'url',
                 $this->router->generate('booking_show', [
@@ -76,7 +77,7 @@ class CalendarSubscriber implements EventSubscriberInterface
                 ])
             );
 
-            // finally, add the event to the CalendarEvent to fill the calendar
+            // Ajout de l'événement au calendrier
             $calendar->addEvent($bookingEvent);
         }
     }

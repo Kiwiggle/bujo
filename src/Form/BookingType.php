@@ -16,12 +16,12 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('beginAt', DateTimeType::class, [
-                'label' => "Début :",
-                'widget' => 'single_text'
+                'label' => "Début :"
+                
             ])
             ->add('endAt', DateTimeType::class, [
-                'label' => "Fin :",
-                'widget' => 'single_text'
+                'label' => "Fin :"
+                
             ])
             ->add('title', TextType::class, [
                 'label' => 'Nom de l\'événement :'

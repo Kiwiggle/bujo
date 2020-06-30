@@ -15,8 +15,7 @@ class MoodSearchType extends AbstractType
         $builder
             ->add('date', DateTimeType::class, [
                 'required' => false,
-                'label' => "Renseignez-ici la date qui vous intéresse : ",
-                'widget' => 'single_text'
+                'label' => "Renseignez-ici la date qui vous intéresse : "
             ])
         ;
     }

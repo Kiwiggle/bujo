@@ -7,7 +7,7 @@
 
 #slick-holder {
   margin-top:2%;
-  height:60vh;
+  height:58vh;
 }
 
 #slick-nav {
@@ -139,6 +139,10 @@ input {
     color:#fff;
 }
 
+input::placeholder {
+  color:#fff;
+}
+
 input:focus {
     outline:none;
     border-bottom: 1px solid #77d07a;
@@ -172,7 +176,7 @@ input:focus {
     height: 40px;
     width: 40px;
     transition: all 0.15s ease-out 0s;
-    background: #77d07a;
+    background: #31be36;
     border: none;
     color: #fff;
     cursor: pointer;
@@ -184,11 +188,11 @@ input:focus {
   }
 
   .option-input:hover {
-    background: #77d07a;
+    background: #31be36;
   }
 
   .option-input:checked {
-    background: #77d07a;
+    background: #31be36;
   }
 
   .option-input:checked::before {
@@ -268,6 +272,7 @@ input:focus {
 
   form input {
     margin: 3% 0;
+    font-size: 1.2em;
     text-align: center;
   }
 

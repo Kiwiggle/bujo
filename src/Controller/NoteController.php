@@ -26,6 +26,7 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/", name="note.index", methods={"GET"}, options={"expose"=true})
+     * Envoie toutes les notes déjà créées
      */
     public function index(NoteRepository $noteRepository): Response
     {
@@ -38,12 +39,14 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/new", name="note.new", methods={"GET","POST"}, options={"expose"=true})
+     * Prépare d'abord un formulaire vierge - ensuite en Ajax, le sauvegarde 
      */
     public function new(Request $request): Response
     {
         $note = new Note();
         $form = $this->createForm(NoteType::class, $note);
 
+        //Sauvegarde de la nouvelle note
         if ($request->isXmlHttpRequest()) {
 
             $data = $request->request->all();
@@ -74,6 +77,7 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="note.edit", methods={"GET","POST"}, requirements={"id"="\d+"}, options={"expose"=true})
+     * Affiche d'abord la note choisie pour modifs ; puis en Ajax - sauvegarde de la modification
      */
     public function edit($id, Request $request, Note $note, NoteRepository $noteRepo): Response
     {
@@ -109,6 +113,7 @@ class NoteController extends AbstractController
 
     /**
      * @Route("/get/{id}", name="note.get", methods={"GET"}, requirements={"id"="\d+"}, options={"expose"=true})
+     * Récupère le contenu JSON de la note pour que Editor.js puisse fonctionner
      */
     public function getNote($id, Note $note, NoteRepository $noteRepo): Response
     {

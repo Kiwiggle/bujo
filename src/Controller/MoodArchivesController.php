@@ -25,6 +25,7 @@ class MoodArchivesController extends AbstractController
     
     /**
      * @Route("/", name="mood.archives")
+     * render la page Archives, avec une partie formulaire recherche d'un jour particulier + gestion du formulaire en cas d'envoi
      */
     public function moodArchives(Request $request, MoodRepository $moodRepo) : Response
     {
@@ -62,14 +63,16 @@ class MoodArchivesController extends AbstractController
     }
 
     /**
+     * Suite à requête AJAX, envoie les données correspondant à un mois entier de Moods pour construire un graphique en Javascript en front
      * @Route("/{month}", name="mood.archives.month", requirements={"month":"\d+"}, options={"expose"=true})
      */
     public function archivesMonth($month, Request $request, MoodRepository $moodRepo) {
-        $user = $this->security->getUser();
-        $user = $user->getId();
-        $monthMood = $moodRepo->findByMonth($month, $user);
+            $user = $this->security->getUser();
+            $user = $user->getId();
+            $monthMood = $moodRepo->findByMonth($month, $user);
 
-        return new JsonResponse($monthMood);
+            return new JsonResponse($monthMood);
+        
     }
 
 }

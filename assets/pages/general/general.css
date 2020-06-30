@@ -46,6 +46,10 @@ button {
     font-family: 'Prata', serif;
 }
 
+.alert.alert-danger {
+    font-size: 2em;
+}
+
 
 
 

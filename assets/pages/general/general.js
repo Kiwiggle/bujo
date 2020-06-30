@@ -8,8 +8,11 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './general.css';
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
+// JQUERY
 import $ from 'jquery';
+
+
+//Fait apparaître le menu général de l'app
 
 $('#close-general-menu').click(function() {
     $('#nav-general-menu').attr('style', 'left:-100%');

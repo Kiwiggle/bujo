@@ -21,7 +21,7 @@
                     <div class="name">
                         {{ form_label(form.name) }}
                         {{ form_errors(form.name) }}
-                        {{ form_widget(form.name) }}
+                        {{ form_widget(form.name, {'attr': {'placeholder': 'FIRSTNAME'}}) }}
                     </div>
                     <div class="date">
                         {{ form_label(form.date) }}
@@ -39,10 +39,10 @@
     </div>
 
 {% else %}
-<div>
-    <div class="list-design">
-        <p>Il n'y a pas de liste :)</p>
+    <div>
+        <div class="list-design">
+            <p>Il n'y avait pas de liste ce jour-ci :)</p>
+        </div>
     </div>
-</div>
 {% endif %}
 

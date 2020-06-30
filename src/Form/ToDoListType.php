@@ -16,7 +16,10 @@ class ToDoListType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => "Nom : "
+                'label' => "Nom : ",
+                'attr' => [
+                    'placeholder' => 'Contact person name'
+                ]
             ])
             ->add('done', CheckboxType::class, [
                 'label' => 'Fait : ',

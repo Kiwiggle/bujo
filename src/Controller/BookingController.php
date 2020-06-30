@@ -26,13 +26,14 @@ class BookingController extends AbstractController
     /**
      * @Route("/", name="booking.calendar", methods={"GET"})
      */
-    public function calendar(Request $request): Response
+    public function calendar(): Response
     {
         return $this->render('booking/calendar.html.twig');
     }
 
     /**
      * @Route("/new", name="booking_new", methods={"GET","POST"}, options={"expose"=true})
+     * Requête ajax -> envoie un formulaire pour créer un nouvel événement, et gère ensuite l'envoi du form
      */
     public function new(Request $request): Response
     {
@@ -73,6 +74,7 @@ class BookingController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="booking_edit", methods={"GET","POST"}, options={"expose"=true})
+     * Requête Ajax - envoie le form pour éditer un événement
      */
     public function edit(Request $request, Booking $booking): Response
     {
@@ -97,6 +99,7 @@ class BookingController extends AbstractController
 
     /**
     * @Route("/dropUpdate/{id}", name="dropUpdate", requirements={"id"="\d+"}, options={"expose"=true})
+    * Ajax - gestion du drag'n'drop d'un événement sur le calendrier (changement de jour)
     */
     public function dropUpdate(BookingRepository $bookingRepo, Request $request, EntityManagerInterface $em)
     {
@@ -140,6 +143,7 @@ class BookingController extends AbstractController
 
     /**
     * @Route("/loadEvent/{id}", name="booking.loadEvent", requirements={"id"="\d+"}, options={"expose"=true})
+    * Ajax - envoie les infos d'un événement après un clic sur le calendrier
     */
     public function loadOneEvent($id, BookingRepository $bookingRepo, Request $request) 
     {

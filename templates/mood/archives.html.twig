@@ -11,7 +11,7 @@
     
     <div class="archives">
          <nav id="archives-nav">
-            <div class="form"><i class="fas fa-search"></i><p>Rechercher</p></div>
+            <div class="form-search-mood"><i class="fas fa-search"></i><p>Rechercher</p></div>
             <div class="month" id="january"><p>Janvier</p></div>
             <div class="month" id="february"><p>Février</p></div>
             <div class="month" id="march"><p>Mars</p></div>
@@ -62,7 +62,9 @@
 
 
 {% block stylesheets %}
+    {{ encore_entry_link_tags('form') }}
     {{ encore_entry_link_tags('mood') }}
+    
 {% endblock %}
 
 {% block javascripts %}

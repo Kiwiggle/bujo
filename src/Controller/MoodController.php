@@ -27,40 +27,37 @@ class MoodController extends AbstractController
      */
     public function index(MoodRepository $moodRepository): Response
     {
-        return $this->render('mood/index.html.twig', [
-            'moods' => $moodRepository->findAll(),
-        ]);
+        return $this->render('mood/index.html.twig');
     }
 
-    /**
-     * @Route("/new", name="mood.new", methods={"GET","POST"})
+     /**
+     * @Route("/today", name="mood.today", methods={"GET", "POST"})
+     * Gestion du Mood d'aujourd'hui
      */
-    public function new(String $path, Request $request): Response
+    public function moodToday(Request $request, MoodRepository $moodRepo) 
     {
-        $mood = new Mood();
-        $form = $this->createForm(MoodType::class, $mood);
-        $form->handleRequest($request);
+        //Recherche d'abord le mood du jour, s'il a déjà été rempli aujourd'hui.
+        $today = date('Y-m-d');
+        $user = $this->security->getUser();
+        $user = $user->getId();
+        $todayMood = $moodRepo->findByDate($today, $user);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $user = $this->security->getUser();
-            $mood->setUser($user);
-
-            $entityManager->persist($mood);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('mood.index');
+        //si le mood a bien été rempli
+        if (empty($todayMood)) {
+            //Nouveau formulaire pour le créer
+            $newForm = $this->new('today', $request);
+            return $newForm;
+        } else {
+            //Ou renvoie le mood d'aujourd'hui
+            return $this->render('mood/today.html.twig', [
+                'today' => $todayMood
+            ]);
         }
-
-        return $this->render('mood/'. $path .'.html.twig', [
-            'mood' => $mood,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
      * @Route("/{id}/edit", name="mood.edit", methods={"GET","POST"}, requirements={"id"="\d+"}, options={"expose"=true})
+     * Modifie le mood d'aujourd'hui
      */
     public function edit($id, Request $request, Mood $mood): Response
     {
@@ -82,27 +79,6 @@ class MoodController extends AbstractController
         ]);
     }
 
-     /**
-     * @Route("/today", name="mood.today", methods={"GET", "POST"})
-     */
-    public function moodToday(Request $request, MoodRepository $moodRepo) {
-        $today = date('Y-m-d');
-        $user = $this->security->getUser();
-        $user = $user->getId();
-        $todayMood = $moodRepo->findByDate($today, $user);
-
-        if (empty($todayMood)) {
-            $newForm = $this->new('today', $request);
-            return $newForm;
-        } else {
-            return $this->render('mood/today.html.twig', [
-                'today' => $todayMood
-            ]);
-        }
-        
-
-    }
-
     /**
      * @Route("/{id}", name="mood.delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
@@ -115,6 +91,33 @@ class MoodController extends AbstractController
         } 
 
         return $this->redirectToRoute('mood.index');
+    }
+
+    /**
+     * @Route("/new", name="mood.new", methods={"GET","POST"})
+     */
+    private function new(String $path, Request $request): Response
+    {
+        $mood = new Mood();
+        $form = $this->createForm(MoodType::class, $mood);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $user = $this->security->getUser();
+            $mood->setUser($user);
+
+            $entityManager->persist($mood);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('mood.index');
+        }
+
+        return $this->render('mood/'. $path .'.html.twig', [
+            'mood' => $mood,
+            'form' => $form->createView(),
+        ]);
     }
 }
 

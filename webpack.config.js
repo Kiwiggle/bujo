@@ -23,14 +23,14 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('general', './assets/general/general.js')
-    .addEntry('home', './assets/home/home.js')
-    .addEntry('calendar', './assets/calendar/calendar.js')
-    .addEntry('form', './assets/form/form.js')
-    .addEntry('todolist', './assets/todolist/todolist.js')
-    .addEntry('mood', './assets/mood/mood.js')
-    .addEntry('chart', './assets/mood/charts.js')
-    .addEntry('note', './assets/note/note.js')
+    .addEntry('general', './assets/pages/general/general.js')
+    .addEntry('home', './assets/pages/home/home.js')
+    .addEntry('calendar', './assets/pages/calendar/calendar.js')
+    .addEntry('form', './assets/pages/form/form.js')
+    .addEntry('todolist', './assets/pages/todolist/todolist.js')
+    .addEntry('mood', './assets/pages/mood/mood.js')
+    .addEntry('chart', './assets/pages/mood/moodArchives.js')
+    .addEntry('note', './assets/pages/note/note.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

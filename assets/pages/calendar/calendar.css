@@ -133,6 +133,14 @@
   color:#31be36;
 }
 
+.popup form[name='booking'] {
+  width: 100%;
+  overflow: scroll;
+  max-height: 650px;
+  margin: 2%;
+  justify-content: flex-start;
+}
+
 
 /**
 *
@@ -162,21 +170,6 @@
     }
 }
 
-@media screen and (orientation:landscape) {
-  .popup h2::after {
-    display:block;
-    content:'(Scrollez pour remplir tous les champs)';
-    font-size:0.5em;
-    color: #31be36;
-    text-shadow: none;
-    font-family: 'Prata', serif;
-  }
-
-  .popup .form-container form {
-    max-height: 100px;
-    margin: 1% 0;
-  }
-}
 
 @media screen and (max-width:820px) {
 
@@ -190,11 +183,9 @@
   }
 
   .popup h2 {
-    font-size: 1.8em;
+    font-size: 2em;
     margin: 4% 0;
   }
-
-
 
   .popup form {
     margin: 4% 0;
@@ -211,9 +202,7 @@
   .popup .form.dates-form {
     width:100%;
   }
-}
 
-@media screen and (max-width:830px) {
   #calendar {
     margin-top: 15%;
   }
@@ -233,8 +222,29 @@
   }
 }
 
+@media screen and (orientation:landscape) and (max-width:800px) {
+  .popup h2::after {
+    display:block;
+    content:'(Scrollez pour remplir tous les champs)';
+    font-size:0.5em;
+    color: #31be36;
+    text-shadow: none;
+    font-family: 'Prata', serif;
+  }
+
+  .popup .form-container form {
+    max-height: 160px;
+    margin: 1% 0;
+  }
+}
+
+
 @media screen and (max-width:450px) {
   #calendar {
     margin-top: 20%;
+  }
+
+  h2 {
+    font-size: 1.6em;
   }
 }
