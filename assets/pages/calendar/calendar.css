@@ -246,6 +246,12 @@
 
 
 @media screen and (max-width:450px) {
+
+  .fc-right {
+    display: flex;
+    flex-direction: column;
+  }
+  
   #calendar {
     margin-top: 20%;
   }

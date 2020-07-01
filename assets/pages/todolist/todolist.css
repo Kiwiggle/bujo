@@ -7,7 +7,6 @@
 
 #slick-holder {
   margin-top:2%;
-  height:58vh;
 }
 
 #slick-nav {
@@ -37,20 +36,9 @@
   font-size: 3em;
 }
 
-.slick-slide::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
-}
-.slick-slide::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: #77d07a;
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0);
-}
 
-.slick-slide {
-  overflow: scroll;
-  max-height: 60vh;
-}
+
+
 
 .slick-list {
   width:100%;
@@ -290,10 +278,6 @@ input:focus {
     width: 100%;
   }
 
-  #slick-holder {
-    height: 70vh;
-  }
-
   .slick-slide {
     max-height: 70vh;
   }
@@ -305,10 +289,14 @@ input:focus {
 
 @media screen and (max-width: 550px) {
   h1 {
-    margin-top:20%;
+    margin-top:25%;
   }
 
   .done {
     width:20%;
+  }
+
+  .slick-track {
+    overflow: scroll;
   }
 }
