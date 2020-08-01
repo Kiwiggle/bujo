@@ -67,6 +67,8 @@ export class BujoCalendar {
         info.jsEvent.preventDefault();
             let url = info.event.url;
             let id = url.match(/(\d+)/); //Pour récupérer l'id de l'event
+
+            //Récupère les infos de l'event cliqué
             $.ajax({
                 url: Routing.generate('booking.loadEvent', {id: id[0]}),
                 type: "POST",
@@ -75,6 +77,8 @@ export class BujoCalendar {
                     $('.event-card').remove();
                     $("#event-click-result").append(data);
                     $("#event-click-result").show('fast');
+
+                    //Clic sur le bouton "modifier l'événement"
                     $("#edit-event").click(function() {
                         $.ajax({
                             url: Routing.generate('booking_edit', {id: id[0]}),
